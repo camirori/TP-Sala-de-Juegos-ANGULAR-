@@ -18,6 +18,11 @@
   background-color: rgb(213, 175, 248);
 }
 
+.navbar-brand{
+  font-size: 25px;
+  color: white;
+}
+
 a {
   text-decoration: none;
 }
