@@ -24,6 +24,7 @@ import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
 import { PiedraPapelTijeraComponent } from '../componentes/piedra-papel-tijera/piedra-papel-tijera.component';
 import { TaTeTiComponent } from '../componentes/ta-te-ti/ta-te-ti.component';
 import { MemotestComponent } from '../componentes/memotest/memotest.component';
+import { SudokuComponent } from '../componentes/sudoku/sudoku.component';
 
 
 const routes: Routes = [
@@ -48,7 +49,8 @@ const routes: Routes = [
       {path: 'AgilidadaMasListado' , component: AgilidadMasListadoComponent},
       {path: 'Agilidad' , component: AgilidadAritmeticaComponent},
       {path: 'TaTeTi' , component: TaTeTiComponent},
-      {path: 'Memotest' , component: MemotestComponent}]
+      {path: 'Memotest' , component: MemotestComponent},
+      {path: 'Sudoku' , component: SudokuComponent}]
   },
   {path: '**' , component: ErrorComponent},
   {path: 'error' , component: ErrorComponent}

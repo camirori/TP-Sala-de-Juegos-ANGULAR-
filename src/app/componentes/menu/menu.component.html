@@ -3,17 +3,20 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menú de Juegos</mat-toolbar>
+    <mat-toolbar><a routerLink="/Juegos">Menú de Juegos</a></mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#" (click)="Juego('Adivina')">Adivina</a>
-      <a mat-list-item href="#" (click)="Juego('Agilidad')">Agilidad</a>
-      <a mat-list-item href="#" (click)="Juego('AdivinaMasListado')">Adivina+listado</a>
-      <a mat-list-item href="#" (click)="Juego('AgilidadaMasListado')">Agilidad+listado</a>
-      <a mat-list-item href="#">Link 3</a>
-      <a mat-list-item href="#">Link 3</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item (click)="Juego('Adivina')">Adivina</a>
+      <a mat-list-item (click)="Juego('Agilidad')">Agilidad</a>
+      <a mat-list-item (click)="Juego('AdivinaMasListado')">Adivina+listado</a>
+      <a mat-list-item (click)="Juego('AgilidadaMasListado')">Agilidad+listado</a>
+      <a mat-list-item (click)="Juego('Anagrama')">Anagrama</a>
+      <a mat-list-item (click)="Juego('Piedra-papel-tijera')">Piedra-papel-tijera</a>
+      <a mat-list-item (click)="Juego('TaTeTi')">TaTeTi</a>
+      <a mat-list-item (click)="Juego('Memotest')">Memotest</a>
+      <a mat-list-item (click)="Juego('Sudoku')">Sudoku</a>
     </mat-nav-list>
   </mat-sidenav>
+
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <button
@@ -24,8 +27,12 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Sala de Juegos</span>
+      <span><a class="navbar-brand" routerLink="/Principal">Sala de Juegos</a></span>
     </mat-toolbar>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Mis Datos</a></li>
+      <li><a href="/Login"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
+    </ul>
     <!-- Add Content Here -->
   </mat-sidenav-content>
 </mat-sidenav-container>

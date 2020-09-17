@@ -41,7 +41,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list'; 
+import { MatListModule } from '@angular/material/list';
+import { SudokuComponent } from './componentes/sudoku/sudoku.component'; 
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { MatListModule } from '@angular/material/list';
     SexoPipe,
     PiedraPapelTijeraComponent,
     TaTeTiComponent,
-    MemotestComponent
+    MemotestComponent,
+    SudokuComponent
   ],
   imports: [
     BrowserModule,
