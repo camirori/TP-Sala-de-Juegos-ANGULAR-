@@ -17,3 +17,7 @@
   z-index: 1;
   background-color: rgb(213, 175, 248);
 }
+
+a {
+  text-decoration: none;
+}
