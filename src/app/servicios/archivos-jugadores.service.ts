@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
+
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+
 import { MiHttpService } from './mi-http/mi-http.service'; 
 
-@Injectable()
+
+@Injectable({
+  providedIn: 'root'
+})
 export class ArchivosJugadoresService {
 
   api="http://localhost:8080/jugadoresarchivo/apirestjugadores/";
@@ -10,8 +17,7 @@ export class ArchivosJugadoresService {
     
   }
 
-
-  public   traerJugadores(ruta) {
+  public traerJugadores(ruta) {
     return this.miHttp.httpGetO(this.api+ruta)
     .toPromise()
     .then( data => {
@@ -21,11 +27,7 @@ export class ArchivosJugadoresService {
     }, err => {
       console.log( err );
     })
- 
 
-  
   }
-
-
 
 }

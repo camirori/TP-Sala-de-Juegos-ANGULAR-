@@ -1,15 +1,16 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { MiHttpService } from './mi-http.service';
 
 describe('MiHttpService', () => {
+  let service: MiHttpService;
+
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [MiHttpService]
-    });
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(MiHttpService);
   });
 
-  it('should be created', inject([MiHttpService], (service: MiHttpService) => {
+  it('should be created', () => {
     expect(service).toBeTruthy();
-  }));
+  });
 });

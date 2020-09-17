@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+//import { Http, Response } from '@angular/http';
 
-import {Http ,Response} from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MiHttpService {
-  
-  constructor(public http:Http) { }
+
+  constructor(public http:HttpClient) { } //Http?
   
   public httpGetPromise(url: string, objeto:any){
-
-
     return this.http
     .get(url)
     .toPromise()
@@ -23,13 +22,10 @@ export class MiHttpService {
   }
 
   private extraerDatos(resp:Response) {
-
       return resp.json() || {};
-
   }
-  private handleError(error:Response | any) {
 
+  private handleError(error:Response | any) {
       return error;
   }
-
 }

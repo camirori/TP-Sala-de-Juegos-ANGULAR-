@@ -1,13 +1,43 @@
-.imagenDeMenu{
-width: 80px;
-height: 70px;
+mat-grid-tile {
+    background: white;
+  }
+.container{
+    background: rgb(206, 185, 245);
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
+.imagenDeMenu{
+    width: 80px;
+    height: 70px;
+    }
+    
 .hero-text {
     text-align: center;
-    position: absolute;
+    position: static;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #100000;
     }
+
+a {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+h2,h4,p{
+    text-align: center;
+}
+
+img{
+    position: absolute;
+    right: 44%;
+    top: 10%;
+}

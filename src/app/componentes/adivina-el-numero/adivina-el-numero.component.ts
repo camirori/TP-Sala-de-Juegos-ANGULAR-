@@ -1,5 +1,4 @@
-
-import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { JuegoAdivina } from '../../clases/juego-adivina'
 
 @Component({
@@ -8,7 +7,7 @@ import { JuegoAdivina } from '../../clases/juego-adivina'
   styleUrls: ['./adivina-el-numero.component.css']
 })
 export class AdivinaElNumeroComponent implements OnInit {
- @Output() enviarJuego: EventEmitter<any>= new EventEmitter<any>();
+  @Output() enviarJuego: EventEmitter<any>= new EventEmitter<any>();
 
   nuevoJuego: JuegoAdivina;
   Mensajes:string;
@@ -86,7 +85,8 @@ export class AdivinaElNumeroComponent implements OnInit {
     console.info("objeto",x);
   
    }  
-  ngOnInit() {
+
+  ngOnInit(): void {
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
 @Component({
   selector: 'app-menu-card',
   templateUrl: './menu-card.component.html',
@@ -10,9 +11,9 @@ export class MenuCardComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private router: Router) { }
 
-
-  ngOnInit() {
+  ngOnInit(): void {
   }
+
   Juego(tipo: string) {
     switch (tipo) {
       case 'Adivina':
@@ -29,4 +30,5 @@ export class MenuCardComponent implements OnInit {
         break;
     }
   }
+
 }

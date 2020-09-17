@@ -30,4 +30,7 @@ export class JuegoAdivina extends  Juego {
         }
         return "Te pasate";
       }
+
+  
+
 }

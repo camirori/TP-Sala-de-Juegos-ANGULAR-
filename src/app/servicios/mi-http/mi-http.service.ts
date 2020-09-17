@@ -1,17 +1,15 @@
-import { log } from 'util';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import { Http, Response } from '@angular/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry, map } from 'rxjs/operators';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MiHttpService {
 
-  constructor( public http: Http ) { }
+  constructor( public http: HttpClient ) { }
 
   public httpGetP ( url: string)
   {
@@ -34,9 +32,12 @@ export class MiHttpService {
 
   public httpGetO ( url: string): Observable<Response>
   {
-    return this.http.get( url )
-      .map( ( res: Response ) => res.json())
-      .catch( ( err: any ) => Observable.throw(err.json().error || 'Server error'));
+    return this.http.get( url ).pipe(
+      map( ( res: any ) => res.json()),
+      //catchError(this.handleError)
+      catchError( ( err: any ) => throwError(err.json().error || 'Server error'))   //catch > catchError throw becomes throwError
+    );
+
   }
 
 

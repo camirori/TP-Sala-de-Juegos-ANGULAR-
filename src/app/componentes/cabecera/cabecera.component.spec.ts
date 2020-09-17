@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CabeceraComponent } from './cabecera.component';
 
@@ -6,12 +6,12 @@ describe('CabeceraComponent', () => {
   let component: CabeceraComponent;
   let fixture: ComponentFixture<CabeceraComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ CabeceraComponent ]
     })
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CabeceraComponent);
@@ -19,7 +19,7 @@ describe('CabeceraComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should be created', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

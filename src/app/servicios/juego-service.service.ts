@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
+
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+
 import { Juego } from '../clases/juego';
 import { JuegoAdivina } from '../clases/juego-adivina';
 import { MiHttpService } from './mi-http/mi-http.service'; 
 
-@Injectable()
+
+@Injectable({
+  providedIn: 'root'
+})
 export class JuegoServiceService {
 
   peticion:any;
@@ -62,5 +69,4 @@ export class JuegoServiceService {
 
     return promesa;
   }
-
 }

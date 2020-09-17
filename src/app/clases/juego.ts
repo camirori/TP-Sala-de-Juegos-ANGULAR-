@@ -1,27 +1,27 @@
 export abstract class Juego {
-  public nombre = 'Sin Nombre';
-  public jugador: string;
-  public gano = false;
-
-  constructor(nombre?: string, gano?: boolean,jugador?:string) {
-    if (nombre)
-      this.nombre = nombre;
-
-    if (gano)
-      this.gano = gano;
-    if(jugador)
-      this.jugador=jugador;
-    else
-      this.jugador= "natalia natalia";
-  }
-
-
+    public nombre = 'Sin Nombre';
+    public jugador: string;
+    public gano = false;
   
-
-  public abstract verificar():boolean; 
+    constructor(nombre?: string, gano?: boolean,jugador?:string) {
+      if (nombre)
+        this.nombre = nombre;
   
-  public retornarAyuda() {
+      if (gano)
+        this.gano = gano;
+      if(jugador)
+        this.jugador=jugador;
+      else
+        this.jugador= "natalia natalia";
+    }
+  
+  
     
-    return "NO hay Ayuda definida";
+  
+    public abstract verificar():boolean; 
+    
+    public retornarAyuda() {
+      
+      return "NO hay Ayuda definida";
+    }
   }
-}
