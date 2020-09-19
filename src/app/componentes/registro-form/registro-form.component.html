@@ -1,0 +1,57 @@
+<mat-card class="box">
+    <mat-card-header>
+        <span (click)="hideForm($event)" class="close" title="Close Modal">×</span>
+        <mat-card-title>Log in</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form">
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+                
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Clave</mat-label>
+                <input type="password" matInput [formControl]="passwdFormControl" placeholder="Ex. pat@example.com">
+                
+                <mat-error *ngIf="passwdFormControl.hasError('email') && !passwdFormControl.hasError('required')">
+                Please enter a valid password
+                </mat-error>
+                <mat-error *ngIf="passwdFormControl.hasError('required')">
+                Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Repetir clave</mat-label>
+                <input type="password" matInput [formControl]="passwdFormControl" placeholder="Ex. pat@example.com">
+                
+                <mat-error *ngIf="passwdFormControl.hasError('email') && !passwdFormControl.hasError('required')">
+                Please repeat password
+                </mat-error>
+                <mat-error *ngIf="passwdFormControl.hasError('required')">
+                Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-checkbox>Recordar mis datos</mat-checkbox>
+
+            <div class="clearfix">
+                <button mat-flat-button type="button" (click)="hideForm($event)" class="cancelbtn">Me arrepenti</button>
+                <button mat-flat-button type="submit" class="signupbtn">Registrarme</button>
+            </div>
+
+        </form>   
+    </mat-card-content>
+    <mat-card-footer style="padding: 5%;">
+        <p>Creando la cuenta aceptando los<a (click)="hideForm($event)"> Terminos y condiciones</a>.</p>
+    </mat-card-footer>
+</mat-card>

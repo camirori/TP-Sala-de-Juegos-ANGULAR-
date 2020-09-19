@@ -1,6 +1,12 @@
 mat-grid-tile {
-    background: white;
+    /*min-width: 40px;*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: rgb(253, 253, 253);
+    background-position: 50% 50%;
   }
+
+
 .container{
     background: rgb(206, 185, 245);
     text-align: center;
@@ -8,19 +14,14 @@ mat-grid-tile {
     padding-top: 10px;
 }
 
-.imagenDeMenu{
-    width: 80px;
-    height: 70px;
-    }
     
-.hero-text {
-    text-align: center;
-    position: static;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #100000;
-    }
+.itemMenu{
+    background-color: rgb(253, 253, 253,0.9);
+    padding: 100px;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+}
 
 a {
     text-align: center;
@@ -33,11 +34,10 @@ a:hover {
 }
 
 h2,h4,p{
+    position: static;
+    top: 50%;
+    left: 50%;
     text-align: center;
 }
 
-img{
-    position: absolute;
-    right: 44%;
-    top: 10%;
-}
+

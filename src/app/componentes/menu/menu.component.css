@@ -1,6 +1,6 @@
 .sidenav-container {
   height: 100%;
-  background-color: rgb(232, 225, 238);
+  background-color: rgb(206, 185, 245);
 }
 
 .sidenav {
@@ -15,11 +15,11 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: rgb(213, 175, 248);
+  background-color: rgb(206, 185, 245);
 }
 
 .navbar-brand{
-  font-size: 25px;
+  font-size: 30px;
   color: white;
 }
 

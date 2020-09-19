@@ -5,34 +5,38 @@
   <mat-grid-tile-header>
     <h2 >Menú Principal</h2>
   </mat-grid-tile-header>
-  <mat-grid-tile>
-    <a routerLink="/Juegos">
-      <img src="./assets/imagenes/saladejuegos.png" class="imagenDeMenu" ><br><br><br>
-      <h4>Juegos</h4>
-      <p>El método lúdico es un conjunto de estrategias diseñadas para crear un ambiente de armonía en los estudiantes que están inmersos en el proceso de aprendizaje. Este método busca que los alumnos se apropien de los temas impartidos por los docentes utilizando el juego.</p>
-    </a>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <a routerLink="/Listado">
-      <img src="./assets/imagenes/listado.jpg" class="media-object imagenDeMenu" >
+  <a routerLink="/Juegos">
+    <mat-grid-tile style="background-image: url('/assets/imagenes/saladejuegos.png');">
+      <div class="itemMenu"> 
+        <h4>Juegos</h4>
+        <p>El método lúdico es un conjunto de estrategias diseñadas para crear un ambiente de armonía en los estudiantes que están inmersos en el proceso de aprendizaje. Este método busca que los alumnos se apropien de los temas impartidos por los docentes utilizando el juego.</p>
+      </div>
+     </mat-grid-tile>
+  </a>
+  <a routerLink="/Listado">
+    <mat-grid-tile style="background-image: url('/assets/imagenes/listado.jpg');">
+      <div class="itemMenu"> 
       <h4>Listados de resultados</h4>
       <p>Los listados de los resultados con ordenamiento y busqueda</p>
-    </a>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <a routerLink="/Juegos">
-      <img src="./assets/imagenes/Configuracion.png" class="media-object imagenDeMenu" >
-      <h4>Configuraci&oacute;n</h4>
+    </div>
+    </mat-grid-tile>
+  </a>
+  <a routerLink="/Juegos" >
+    <mat-grid-tile style="background-image: url('/assets/imagenes/Configuracion.png');">
+      <div class="itemMenu"> 
+      <h4>Configuracion</h4>
       <p>Ajustes de la aplicacion y los métodos de autentificación</p>
-    </a>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <a routerLink="/Jugadores">
-      <img src="./assets/imagenes/jugadores.png" class="media-object imagenDeMenu" >
+    </div>
+    </mat-grid-tile>
+  </a>
+  <a routerLink="/Jugadores">
+    <mat-grid-tile style="background-image: url('/assets/imagenes/jugadores.png');">
+      <div class="itemMenu"> 
       <h4>Jugadores</h4>
       <p>Listado de jugadores</p>
-    </a>
-  </mat-grid-tile>
+    </div>
+    </mat-grid-tile>
+  </a>
 </mat-grid-list>
 </div>
 

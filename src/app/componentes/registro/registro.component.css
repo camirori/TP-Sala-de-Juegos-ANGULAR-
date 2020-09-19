@@ -35,10 +35,6 @@ button {
 /* Float cancel and signup buttons and add an equal width */
 .cancelbtn,.signupbtn {float:left;width:50%}
 
-/* Add padding to container elements */
-.container {
-    padding: 16px;
-}
 
 /* The Modal (background) */
 .modal {
@@ -55,13 +51,6 @@ button {
     padding-top: 60px;
 }
 
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 98%; /* Could be more or less, depending on screen size */
-}
 
 /* The Close Button (x) */
 .close {
@@ -92,3 +81,6 @@ button {
        width: 100%;
     }
 }
+
+
+

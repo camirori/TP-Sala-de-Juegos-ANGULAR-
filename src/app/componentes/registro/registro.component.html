@@ -13,32 +13,13 @@
     
     
     <div id="id01" class="modal">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-      <form class="modal-content animate" >
-        <div class="container">
-          <label><b>Email</b></label>
-          <input type="text" placeholder="Ingresa tu correo" name="email" required>
-    
-          <label><b>Clave</b></label>
-          <input type="password" placeholder="Aca la clave" name="psw" required>
-    
-          <label><b>Repita la clave</b></label>
-          <input type="password" placeholder="Aca repeti la misa clave  de arriba" name="psw-repeat" required>
-          <input type="checkbox" checked="checked">Recordar mis datos
-          <p>creando la cuenta aceptando los<a  onclick="document.getElementById('id01').style.display='none'"  >Terminos y condiciones</a>.</p>
-    
-          <div class="clearfix">
-            <button mat-flat-button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Me arrepenti</button>
-            <button mat-flat-button type="submit" class="signupbtn">Registrarme</button>
-          </div>
-        </div>
-      </form>
+      <app-registro-form></app-registro-form>
+      <!--form class="modal-content animate" ></form-->
     </div>
     
     <script>
     // Get the modal
     var modal = document.getElementById('id01');
-    
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {

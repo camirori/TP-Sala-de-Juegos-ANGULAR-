@@ -1,0 +1,55 @@
+.box{
+    position: relative;
+    left: 35%;
+    max-width: 400px;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 98%;
+    padding: 5%;
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+  }
+  
+.example-full-width {
+    width: 100%;
+  }
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #388a3a;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    /*border: none;*/
+
+    /* Float cancel and signup buttons and add an equal width */
+    float:left;
+    width:50%;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    /*padding: 14px 20px;*/     
+    background-color: #c7352b;
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    color: #000;
+    font-size: 40px;
+    font-weight: bold;
+}
