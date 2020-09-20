@@ -1,11 +1,12 @@
 .panel
 {
-    height: 200px;
+    height: 170px;
     background-image: url("/assets/imagenes/cabecera.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: contain;
     position: relative;
+    margin: 0px;
 }
 
 

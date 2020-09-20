@@ -7,6 +7,7 @@ import { AppRoutingModule } from './modulos/app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modulos/material/material.module';
+import {FirebaseModule} from './modulos/firebase/firebase.module';
 
 import { ErrorComponent } from './componentes/error/error.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
@@ -33,6 +34,9 @@ import { ArchivosJugadoresService} from './servicios/archivos-jugadores.service'
 import { JuegoServiceService } from './servicios/juego-service.service';
 //import { MiHttpService } from './servicios/mi-http.service'; 
 import { MiHttpService } from './servicios/mi-http/mi-http.service';
+import { AuthService } from './servicios/auth.service'; 
+
+
 import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/piedra-papel-tijera.component';
 import { TaTeTiComponent } from './componentes/ta-te-ti/ta-te-ti.component';
 import { MemotestComponent } from './componentes/memotest/memotest.component';
@@ -44,6 +48,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { SudokuComponent } from './componentes/sudoku/sudoku.component';
 import { RegistroFormComponent } from './componentes/registro-form/registro-form.component'; 
+
+
 
 @NgModule({
   declarations: [
@@ -86,9 +92,10 @@ import { RegistroFormComponent } from './componentes/registro-form/registro-form
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    FirebaseModule
   ],
-  providers: [JuegoServiceService, MiHttpService,ArchivosJugadoresService,JugadoresService],
+  providers: [JuegoServiceService, MiHttpService,ArchivosJugadoresService,JugadoresService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

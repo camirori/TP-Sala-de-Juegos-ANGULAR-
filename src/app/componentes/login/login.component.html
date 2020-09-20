@@ -1,34 +1,46 @@
-<div class="container" >
-    <div class="jumbotron" style="padding:50px;">
-      <form action="return true;">
-        <div class="imgcontainer">
-          <img src="./assets/imagenes/login.png" alt="Avatar" class="avatar" max-width="104" >
-        </div>
+<app-cabecera>  </app-cabecera>
+<div class="background">
+<div style="background-color:rgb(255, 255, 255, 0.8);">
+<div class="container centro" >
+    <form class="example-form" action="return true;">
+      <button mat-fab matTooltip="Autocompletar" class="alert" (click)="Autocompletar()">
+        <span class="material-icons">
+        announcement
+        </span></button>
+      <div class="imgcontainer">
+          <img src="./assets/imagenes/login.png" alt="Avatar" class="avatar" >
+      </div>
   
-        <div class="container">
-          <label><b>Usuario</b></label>
-          <input type="text" placeholder="Usuario"  [(ngModel)]="usuario"  name="uname" required>
-  
-          <label><b>Clave</b></label>
-          <input type="password" placeholder="Clave"  [(ngModel)]="clave" name="psw" required>
-              
-          <button *ngIf="logeando"  (click)="MoverBarraDeProgreso()" >Ingresar</button>
+      <div class="container">
+        <mat-form-field> 
+          <mat-label>Usuario</mat-label>
+          <input matInput type="text" placeholder="Usuario"  [(ngModel)]="usuario"  name="uname" required>
+          </mat-form-field> 
+          <mat-form-field> 
+            <mat-label>Clave</mat-label>
+          <input matInput type="password" placeholder="Clave"  [(ngModel)]="clave" name="psw" required>
+          </mat-form-field> 
+          <button mat-flat-button class="boton" *ngIf="logeando"  (click)="Validar()" >Ingresar</button>
          
           <div *ngIf="!logeando" class="progress">
               <div class="progress-bar progress-bar-info progress-bar-striped active" [class]="clase" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="ProgresoDeAncho" >
                 {{progresoMensaje}} - {{progreso}}%
               </div>
           </div>
+          <p style="color: red;">{{errorMsj}}</p>
          
-          <input type="checkbox" checked="checked"> Recordar mis datos
-        </div>
-  
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="button" class="cancelbtn" routerLink="/Principal">Cancelar</button>
-          <button type="button" class="aceptbtn" routerLink="/Registro" >Registrarse</button>
+          <input type="checkbox" checked="checked"> Recordar mis datos          
           <span class="psw">Te olvidaste <a href="#">la clave?</a></span>
-        </div>
+      </div>
+  
+      <div class="container centro">
+          <button mat-button type="button" class="boton cancelbtn" routerLink="/Principal">Cancelar</button>
+          <button mat-button type="button" class="boton aceptbtn" routerLink="/Registro" >Registrarse</button>
+
+      </div>
        
-      </form>
-    </div>
-  </div>
+    </form>
+</div>
+</div>
+</div>
+

@@ -16,8 +16,8 @@ mat-grid-tile {
 
     
 .itemMenu{
-    background-color: rgb(253, 253, 253,0.9);
-    padding: 100px;
+    background-color: rgb(253, 253, 253,0.95);
+    padding: 18%;
     margin: auto;
     height: 100%;
     width: 100%;
@@ -38,6 +38,11 @@ h2,h4,p{
     top: 50%;
     left: 50%;
     text-align: center;
+}
+
+h4, h2{
+    font-size: x-large;
+    letter-spacing: 2px;
 }
 
 

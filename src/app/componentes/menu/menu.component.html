@@ -18,21 +18,24 @@
   </mat-sidenav>
 
   <mat-sidenav-content>      
-    <span><a class="navbar-brand" routerLink="/Principal" data-toggle="tooltip" title="Volver al inicio">Sala de Juegos</a></span>
+    <!--span><a class="navbar-brand" routerLink="/Principal" data-toggle="tooltip" title="Volver al inicio">Sala de Juegos</a></span>
     <ul class="nav navbar-nav" style="float: right;">
       <li><a routerLink="/Principal"><span class="glyphicon glyphicon-home"></span> Home</a></li>
       <li><a href="/QuienSoy"><span class="glyphicon glyphicon-user"></span> Mis Datos</a></li>
       <li><a routerLink="/Registro"><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
       <li><a routerLink="/Login"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
-    </ul>
+    </ul-->
 
-    <mat-toolbar color="primary">
+    <app-cabecera>  </app-cabecera>
+
+    <mat-toolbar *ngIf="isHandset$ | async" color="primary">
       <button
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        *ngIf="isHandset$ | async"
+        class="botonMenu">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
     </mat-toolbar>

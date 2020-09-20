@@ -7,6 +7,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
+import {LayoutModule} from '@angular/cdk/layout';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 
 
@@ -20,7 +23,9 @@ const MaterialComponents = [
   MatFormFieldModule,
   MatCardModule,
   MatCheckboxModule,
-  MatIconModule
+  MatIconModule,
+  LayoutModule,
+  MatTooltipModule
 
 ]
 @NgModule({

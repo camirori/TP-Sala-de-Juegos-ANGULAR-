@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthService } from '../../servicios/auth.service'; 
+import { Jugador } from '../../clases/jugador';
+
 
 import {Subscription, timer} from "rxjs";
 
@@ -17,12 +20,14 @@ export class LoginComponent implements OnInit {
   progresoMensaje="esperando..."; 
   logeando=true;
   ProgresoDeAncho:string;
+  errorMsj= '';
 
   clase="progress-bar progress-bar-info progress-bar-striped ";
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router) {
+      private route: ActivatedRoute,
+      private router: Router,
+      private authService: AuthService) {
       this.progreso=0;
       this.ProgresoDeAncho="0%";
 
@@ -31,11 +36,44 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  Entrar() {
-    if (this.usuario === 'admin' && this.clave === 'admin') {
-      this.router.navigate(['/Principal']);
+  Autocompletar(){
+    this.usuario='user1@user.com';
+    this.clave='123456';
+  }
+
+  Validar(){
+    if (!this.usuario || !this.clave){
+      this.errorMsj="Por favor complete las credenciales";
+    }else{
+      this.errorMsj="";
+      this.MoverBarraDeProgreso();
     }
   }
+
+  Entrar() {
+    this.logeando=true;
+    if (this.usuario && this.clave) {
+      let user = new Jugador(this.usuario,this.clave);
+      let rdo = this.authService.signIn(user).then(()=>{
+        this.authService.isLoggedIn=true;
+        this.ReiniciarBarra();
+   
+        this.router.navigate(['/Principal']);
+      }).catch(err=>{
+        this.errorMsj=err;
+        this.ReiniciarBarra();
+      });
+      console.log(rdo);
+    }
+  }
+
+  ReiniciarBarra(){
+    this.progreso=0;
+    this.ProgresoDeAncho="0%";
+    this.clase="progress-bar progress-bar-info progress-bar-striped ";
+    this.logeando=true;
+  }
+
   MoverBarraDeProgreso() {
     
     this.logeando=false;
@@ -43,7 +81,6 @@ export class LoginComponent implements OnInit {
     this.progresoMensaje="NSA spy..."; 
     let timerObj = timer(200, 50);
     this.subscription = timerObj.subscribe(t => {
-      console.log("inicio");
       this.progreso=this.progreso+1;
       this.ProgresoDeAncho=this.progreso+20+"%";
       switch (this.progreso) {
@@ -69,7 +106,6 @@ export class LoginComponent implements OnInit {
           break;
           
         case 100:
-          console.log("final");
           this.subscription.unsubscribe();
           this.Entrar();
           break;

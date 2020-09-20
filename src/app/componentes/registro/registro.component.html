@@ -8,24 +8,15 @@
     </div>
 
     <strong><p>No leer lo anterior, es solo un ejemplo sacado de https://www.argentina.gob.ar/terminos-y-condiciones </p></strong>
-    <button  mat-flat-button onclick="document.getElementById('id01').style.display='block'" style="width:auto; position: relative; left: 45%;">Acepto</button>
-    <button  mat-flat-button class="cancelbtn"  routerLink="/Principal" style="width:auto; position: relative; left: 35%;">No acepto</button>
+    <div class="botones">
+    <button  mat-flat-button (click)="mostrarForm = !mostrarForm" style="float:right;">Acepto</button>
+    <button  mat-flat-button class="cancelbtn"  routerLink="/Principal">No acepto</button>    
+    </div>
+
     
-    
-    <div id="id01" class="modal">
-      <app-registro-form></app-registro-form>
-      <!--form class="modal-content animate" ></form-->
+    <div *ngIf="mostrarForm" class="modal">
+      <app-registro-form class="centro" (mostrarThisEvent)="hideForm($event)"></app-registro-form>
     </div>
     
-    <script>
-    // Get the modal
-    var modal = document.getElementById('id01');
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-    </script>
     
 </body>

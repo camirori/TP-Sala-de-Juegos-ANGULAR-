@@ -1,6 +1,6 @@
 <mat-card class="box">
     <mat-card-header>
-        <span (click)="hideForm($event)" class="close" title="Close Modal">×</span>
+        <span (click)="hideForm()" class="close" title="Close Modal">×</span>
         <mat-card-title>Log in</mat-card-title>
     </mat-card-header>
     <mat-card-content>
@@ -22,8 +22,8 @@
                 <mat-label>Clave</mat-label>
                 <input type="password" matInput [formControl]="passwdFormControl" placeholder="Ex. pat@example.com">
                 
-                <mat-error *ngIf="passwdFormControl.hasError('email') && !passwdFormControl.hasError('required')">
-                Please enter a valid password
+                <mat-error *ngIf="passwdFormControl.hasError('minlength') && !passwdFormControl.hasError('required')">
+                La contraseña debe contener al menos 5 caracteres
                 </mat-error>
                 <mat-error *ngIf="passwdFormControl.hasError('required')">
                 Password is <strong>required</strong>
@@ -32,26 +32,28 @@
 
             <mat-form-field class="example-full-width">
                 <mat-label>Repetir clave</mat-label>
-                <input type="password" matInput [formControl]="passwdFormControl" placeholder="Ex. pat@example.com">
-                
-                <mat-error *ngIf="passwdFormControl.hasError('email') && !passwdFormControl.hasError('required')">
-                Please repeat password
+                <input type="password" matInput [formControl]="repeatPasswdFormControl" placeholder="Ex. pat@example.com" >
+                <mat-error *ngIf="repeatPasswdFormControl.hasError('validateAreEqual') && (registroForm.controls['repeatPass'].dirty || registroForm.controls['repeatPass'].touched) && !repeatPasswdFormControl.hasError('required')">
+                La contraseña no coincide
                 </mat-error>
-                <mat-error *ngIf="passwdFormControl.hasError('required')">
+                <mat-error *ngIf="repeatPasswdFormControl.hasError('required')">
                 Password is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
-
-            <mat-checkbox>Recordar mis datos</mat-checkbox>
-
+            <mat-error *ngIf="registroForm.errors?.notMatch && (registroForm.controls['repeatPass'].dirty || registroForm.controls['repeatPass'].touched) && !repeatPasswdFormControl.hasError('required')">
+                La contraseña no coincide
+            </mat-error>
+            
+            <mat-checkbox [(ngModel)]="checked" color="primary" name="checked">Recordar mis datos</mat-checkbox>
+            <p style="color: red;">{{errorMsj}}</p>
             <div class="clearfix">
-                <button mat-flat-button type="button" (click)="hideForm($event)" class="cancelbtn">Me arrepenti</button>
-                <button mat-flat-button type="submit" class="signupbtn">Registrarme</button>
+                <button mat-flat-button type="button" (click)="hideForm()" class="cancelbtn">Me arrepenti</button>
+                <button mat-flat-button type="submit" (click)="Registrar()" class="signupbtn">Registrarme</button>
             </div>
 
         </form>   
     </mat-card-content>
     <mat-card-footer style="padding: 5%;">
-        <p>Creando la cuenta aceptando los<a (click)="hideForm($event)"> Terminos y condiciones</a>.</p>
+        <p>Creando la cuenta aceptando los<a (click)="hideForm()"> Terminos y condiciones</a>.</p>
     </mat-card-footer>
 </mat-card>

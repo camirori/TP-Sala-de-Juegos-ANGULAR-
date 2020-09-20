@@ -22,6 +22,9 @@ export class RegistroComponent implements OnInit {
   ngOnInit() {
   }
 
-  
+  mostrarForm: boolean= false;
+  hideForm(evento){
+    this.mostrarForm=false;
+  }
 
 }
