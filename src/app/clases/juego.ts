@@ -6,7 +6,6 @@ export abstract class Juego {
     constructor(nombre?: string, gano?: boolean,jugador?:string) {
       if (nombre)
         this.nombre = nombre;
-  
       if (gano)
         this.gano = gano;
       if(jugador)
@@ -14,14 +13,10 @@ export abstract class Juego {
       else
         this.jugador= "natalia natalia";
     }
-  
-  
-    
-  
+
     public abstract verificar():boolean; 
     
     public retornarAyuda() {
-      
-      return "NO hay Ayuda definida";
+      return "NO hay ayuda definida";
     }
   }

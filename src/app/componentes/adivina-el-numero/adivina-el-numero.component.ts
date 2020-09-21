@@ -16,23 +16,24 @@ export class AdivinaElNumeroComponent implements OnInit {
  
   constructor() { 
     this.nuevoJuego = new JuegoAdivina();
-    console.info("numero Secreto:",this.nuevoJuego.numeroSecreto);  
     this.ocultarVerificar=false;
   }
+
+
   generarnumero() {
+    this.nuevoJuego = new JuegoAdivina();
     this.nuevoJuego.generarnumero();
-    this.contador=0;
+    this.contador=0;   
+    console.info("numero Secreto:",this.nuevoJuego.numeroSecreto);  
   }
+
   verificar()
   {
     this.contador++;
-    this.ocultarVerificar=true;
-    console.info("numero Secreto:",this.nuevoJuego.gano);  
     if (this.nuevoJuego.verificar()){
       
-      this.enviarJuego.emit(this.nuevoJuego);
+      //this.enviarJuego.emit(this.nuevoJuego);
       this.MostarMensaje("Sos un Genio!!!",true);
-      this.nuevoJuego.numeroSecreto=0;
 
     }else{
 
@@ -63,7 +64,6 @@ export class AdivinaElNumeroComponent implements OnInit {
       }
       this.MostarMensaje("#"+this.contador+" "+mensaje+" ayuda :"+this.nuevoJuego.retornarAyuda());
      
-
     }
     console.info("numero Secreto:",this.nuevoJuego.gano);  
   }  
@@ -77,10 +77,9 @@ export class AdivinaElNumeroComponent implements OnInit {
       }else{
         x.className = "show Perdedor";
       }
-    var modelo=this;
     setTimeout(function(){ 
       x.className = x.className.replace("show", "");
-      modelo.ocultarVerificar=false;
+
      }, 3000);
     console.info("objeto",x);
   
