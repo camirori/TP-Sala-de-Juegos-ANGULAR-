@@ -2,18 +2,18 @@
 
   <div style="text-align:center">
     <h1>
-      {{nuevoJuego.nombre}}
+      Adivina el número
     </h1>
   </div>
 
   <!--Comenzar-->
-  <div class="centro containerInicio" *ngIf="nuevoJuego.numeroSecreto==0">
+  <div class="centro containerInicio" *ngIf="nuevoJuego == null">
     <button mat-raised-button class="comenzarBtn" (click)="generarnumero()">Comenzar</button>
   </div>
 
   <!--Juego-->
   <div class="centro">
-  <form *ngIf="nuevoJuego.numeroSecreto!=0" name="juego">
+  <form *ngIf="nuevoJuego != null" name="juego">
 
     <label>Número secreto: </label><label *ngIf="!nuevoJuego.gano"> ?</label><label *ngIf="nuevoJuego.gano">{{nuevoJuego.numeroSecreto}}</label><br>
     <label>Ingresa un número entre 1 y 100: </label><input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text"/><br>

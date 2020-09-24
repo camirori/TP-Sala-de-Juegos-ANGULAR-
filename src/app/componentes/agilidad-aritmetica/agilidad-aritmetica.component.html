@@ -12,28 +12,24 @@
 
     <!--Juego-->
   <div class="centro">
-  <form name="juego" *ngIf="nuevoJuego!=undefined">
+  <form name="juego" *ngIf="nuevoJuego!=undefined" class="centro">
 
     <label>{{nuevoJuego.operando1}}</label><label>{{nuevoJuego.operador}}</label><label>{{nuevoJuego.operando2}}</label>
-    <label>=</label><input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" />
+    <label>=</label><input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" />
          
-    <button mat-raised-button (click)="verificar()" class="centrarItem" *ngIf="!ocultarVerificar">Verificar {{Tiempo}} </button>
+    <br><button mat-raised-button (click)="verificar()" *ngIf="!ocultarVerificar">Verificar {{Tiempo}} </button><br>
 
 
-    <h2><p><i class="fa fa-spinner fa-spin"></i>Esperando numero...</p></h2>
-    
-
-    <h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
-    <h3 [hidden]="nuevoJuego.gano">usted aún no gano </h3>
-    
+  
     <!--Resultado-->
-    <div *ngIf="nuevoJuego.gano">
-      <label>Ganaste!!!</label><br>
-      <label>Tiempo:</label><label>{{this.Tiempo}}</label><br>
+    <div *ngIf="mensajePrincipal!=undefined" class="centro" style="flex-direction: column;">
+      <label >{{mensajePrincipal}}</label>
+      <p>{{mensajeSecundario}}</p>
+    </div> 
 
-    </div>  
 
-    <button mat-raised-button class="centrarItem" *ngIf="nuevoJuego.gano" (click)="NuevoJuego()">Nueva operacion</button>
+    <!--Nuevo juego-->
+    <button mat-raised-button *ngIf="nuevoJuego.gano || Tiempo==0" (click)="NuevoJuego()">Nueva operacion</button>
 
     
   </form>

@@ -15,19 +15,23 @@ export class JuegoAdivina extends  Juego {
           return false;
         }
      }
-     public generarnumero() {
-        this.numeroSecreto = Math.floor((Math.random() * 100) + 1);
-        console.info('numero Secreto:' + this.numeroSecreto);
-        this.gano = false;
-        this.numeroIngresado=0;
+    public generarnumero() {
+      this.numeroSecreto = Math.floor((Math.random() * 100) + 1);
+      console.info('numero Secreto:' + this.numeroSecreto);
+      this.gano = false;
+      this.numeroIngresado=0;
+    }
+    
+    public retornarAyuda() {
+      if (this.numeroIngresado < this.numeroSecreto) {
+        return "Falta";
       }
-      
-      public retornarAyuda() {
-        if (this.numeroIngresado < this.numeroSecreto) {
-          return "Falta";
-        }
-        return "Te pasate";
-      }
+      return "Te pasate";
+    }
+
+    public calcularPuntaje(intentos: any){
+
+    }
 
   
 

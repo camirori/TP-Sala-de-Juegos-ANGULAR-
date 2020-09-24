@@ -7,15 +7,6 @@ export class JuegoAgilidad extends  Juego{
     operador: String;
     respuesta: Number;
 
-    public verificar():boolean{
-      if (this.numeroIngresado == this.respuesta) {
-        this.gano = true;
-        return true;          
-      } else {
-        return false;
-      }
-    }
-
     constructor(nombre?: string, gano?: boolean, jugador?:string) {
       super("Agilidad aritmetica",gano,jugador);  
       this.generarOperacion();
@@ -28,22 +19,37 @@ export class JuegoAgilidad extends  Juego{
       console.log(op);
       switch(op){
         case 1:
-          this.respuesta= this.operando1+this.operando2;
+          this.respuesta= Math.floor(this.operando1+this.operando2);
           this.operador='+';
           break;
         case 2:
-          this.respuesta= this.operando1-this.operando2;
+          this.respuesta= Math.floor(this.operando1-this.operando2);
           this.operador='-';
           break;
         case 3:
-          this.respuesta= this.operando1*this.operando2;
+          this.respuesta= Math.floor(this.operando1*this.operando2);
           this.operador='x';
           break;
         case 4:
-          this.respuesta= this.operando1/this.operando2;
+          this.respuesta= Math.floor(this.operando1/this.operando2);
           this.operador='/';
           break;
       }
+      console.log('respuesta '+this.respuesta);
+
+    }
+
+    public verificar():boolean{
+      if (this.numeroIngresado == this.respuesta) {
+        this.gano = true;
+        return true;          
+      } else {
+        return false;
+      }
+    }
+
+    public calcularPuntaje(tiempo: any){
+
 
     }
 

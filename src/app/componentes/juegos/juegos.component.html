@@ -1,12 +1,50 @@
-<app-menu></app-menu>
+<!--app-menu></app-menu>
 
-<div clase="cntr" [style]="estilos">
+<div clase="cntr" [style]="estilos"-->
   <!--div style="text-align:center; left: 15%;">
     <h1>
      Sala de Juegos
     </h1>
   </div-->
- <router-outlet></router-outlet> 
-</div>
+ <!--router-outlet></router-outlet> 
+</div-->
 
+
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar><a routerLink="/Juegos" >Menú de Juegos</a></mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item (click)="Juego('Adivina')">Adivina el numero</a>
+      <a mat-list-item (click)="Juego('Agilidad')">Agilidad aritémtica</a>
+      <a mat-list-item (click)="Juego('AdivinaMasListado')">Adivina+listado</a>
+      <a mat-list-item (click)="Juego('AgilidadaMasListado')">Agilidad+listado</a>
+      <a mat-list-item (click)="Juego('Anagrama')">Anagrama</a>
+      <a mat-list-item (click)="Juego('Piedra-papel-tijera')">Piedra-papel-tijera</a>
+      <a mat-list-item (click)="Juego('TaTeTi')">TaTeTi</a>
+      <a mat-list-item (click)="Juego('Memotest')">Memotest</a>
+      <a mat-list-item (click)="Juego('Sudoku')">Sudoku</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>      
+    <app-cabecera>  </app-cabecera>
+    <mat-toolbar *ngIf="isHandset$ | async" color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+        class="botonMenu">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 

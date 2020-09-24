@@ -1,1 +1,34 @@
-<div class="containerJuego" ><p>ta-te-ti works!</p></div>
+<div class="containerJuego" >
+    <div style="text-align:center">
+        <h1>
+            Ta-te-ti
+        </h1>
+    </div>
+    <div class="containerInicio centrarItem" >
+        <!--Juego-->
+        <div class="grilla centrarItem">
+        <mat-grid-list cols="3" rowHeight="3:3">
+            <mat-grid-tile
+                *ngFor="let tile of tiles"
+                [colspan]="tile.cols"
+                [rowspan]="tile.rows"
+                [style.background]="tile.color"
+                >
+                <button class="celda" 
+                    [disabled]="!(tile.disponible && habilitarOpciones)" 
+                    (click)="movimientoJugador(tile.numero)"
+                    [style.background-image]="tile.img"
+                    [style.border]="tile.borde"></button>
+            </mat-grid-tile>
+        </mat-grid-list>
+        </div>
+
+        <!--Resultado-->
+        <div *ngIf="mensaje!=undefined" class="centro">
+            <label >{{mensaje}}</label>
+        </div> 
+
+        <button class="centrarItem" style="left: 25%;" mat-raised-button (click)="nuevoJuego()">Nueva partida</button>
+    </div>
+
+</div>

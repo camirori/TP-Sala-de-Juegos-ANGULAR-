@@ -15,7 +15,7 @@ export class AdivinaElNumeroComponent implements OnInit {
   ocultarVerificar:boolean;
  
   constructor() { 
-    this.nuevoJuego = new JuegoAdivina();
+    //this.nuevoJuego = new JuegoAdivina();
     this.ocultarVerificar=false;
   }
 

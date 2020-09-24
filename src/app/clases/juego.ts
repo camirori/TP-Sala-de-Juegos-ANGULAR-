@@ -14,7 +14,8 @@ export abstract class Juego {
         this.jugador= "natalia natalia";
     }
 
-    public abstract verificar():boolean; 
+    public abstract verificar():any; 
+    public abstract calcularPuntaje(criterio: any);
     
     public retornarAyuda() {
       return "NO hay ayuda definida";

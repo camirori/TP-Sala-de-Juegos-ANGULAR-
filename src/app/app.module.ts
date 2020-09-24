@@ -24,7 +24,7 @@ import { InputJugadoresComponent } from './componentes/input-jugadores/input-jug
 import { JugadoresListadoComponent } from './componentes/jugadores-listado/jugadores-listado.component';
 import { ListadoComponent } from './componentes/listado/listado.component';
 import { ListadoDeResultadosComponent } from './componentes/listado-de-resultados/listado-de-resultados.component';
-import { MenuComponent } from './componentes/menu/menu.component';
+
 import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { SexoPipe } from './pipes/sexo.pipe';
@@ -69,7 +69,7 @@ import { RegistroFormComponent } from './componentes/registro-form/registro-form
     JugadoresListadoComponent,
     ListadoComponent,
     ListadoDeResultadosComponent,
-    MenuComponent,
+
     QuienSoyComponent,
     RegistroComponent,
     SexoPipe,

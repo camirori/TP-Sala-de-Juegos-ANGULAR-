@@ -1,3 +1,41 @@
 <div class="containerJuego" >
-    <p>piedra-papel-tijera works!</p>
+    <div style="text-align:center">
+        <h1>
+            Piedra, papel o tijera
+        </h1>
+    </div>
+
+    <!--Comenzar-->
+    <div class="centro containerInicio" *ngIf="juego == null">
+        <button mat-raised-button class="comenzarBtn" (click)="iniciarJuego()">Comenzar</button>
+    </div>
+
+    <!--Juego-->
+    <div class="centro" *ngIf="juego != null">
+    <form  >
+        <div *ngIf="resultado==undefined">
+        <label>Elige!</label><br>
+        <button mat-fab [disabled]="bloquearOpciones" class="opciones" (click)="verificar(1)" style="background-image: url('/assets/imagenes/ppt/piedra.PNG');"></button>
+        <button mat-fab [disabled]="bloquearOpciones" class="opciones" (click)="verificar(2)" style="background-image: url('/assets/imagenes/ppt/papel.PNG');"></button>
+        <button mat-fab [disabled]="bloquearOpciones" class="opciones" (click)="verificar(3)" style="background-image: url('/assets/imagenes/ppt/tijera.PNG');"></button>
+        </div>
+        
+        <p>Victorias: {{this.juego.ContadorDeGanadas}}</p>
+        <p>Empates: {{this.juego.ContadorDeEmpates}}</p>
+        <p>Derrotas: {{this.juego.ContadorDePerdidas}}</p>
+                
+        
+
+        <!--Resultado-->
+        <div *ngIf="mensaje!=undefined" class="centro">
+            <label >{{mensaje}}</label>
+        </div> 
+  
+        <button mat-raised-button *ngIf="resultado!=undefined" (click)="iniciarJuego()">Nueva partida</button>
+
+
+    </form>
 </div>
+
+
+
