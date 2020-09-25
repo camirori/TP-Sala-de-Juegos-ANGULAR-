@@ -1,1 +1,29 @@
-<div class="containerJuego" ><p>Proximamente!</p></div>
+<div class="containerJuego" >
+    <div style="text-align:center">
+        <h1>
+            Sudoku
+        </h1>
+    </div>
+    <div class="containerInicio centrarItem" >
+        <!--Juego-->
+        <div class="grilla centrarItem">
+        <mat-grid-list cols="4" rowHeight="4:4">
+            <mat-grid-tile
+                *ngFor="let tile of tiles"
+                [colspan]="tile.cols"
+                [rowspan]="tile.rows"
+                >
+                <input type="number" [disabled]="!tile.habilitar" class="celda" [style.background]="tile.color" 
+                    [(ngModel)]="tile.input" name="input">
+            </mat-grid-tile>
+        </mat-grid-list>
+        </div>
+
+        <!--Resultado-->
+        <div *ngIf="mensaje!=undefined" class="centro">
+            <label >{{mensaje}}</label>
+        </div> 
+        <button class="centrarItem" style="left: 25%;" mat-raised-button (click)="verificar()">Verificar</button><br>
+        <button class="centrarItem" style="left: 25%;" mat-raised-button (click)="nuevoJuego()">Nueva partida</button>
+    </div>
+</div>

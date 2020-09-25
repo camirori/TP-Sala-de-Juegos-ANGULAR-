@@ -13,3 +13,88 @@
     align-items: center;
     flex-wrap: wrap;*/
 }
+
+.containerInicio{
+    max-width: 50%;
+    max-height: 70%;
+    background:rgb(255, 255, 255,0.8);
+}
+
+.grilla{
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+}
+
+
+
+mat-grid-list{
+    background-color: black;
+    /*max-width: 50%;
+    max-height: 50%;
+    margin: 20px;
+    padding: 0;*/
+}
+mat-grid-tile{
+    background-color: white;
+    /*padding: 0;*/
+}
+input{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: x-large;
+    border: 0;
+    background-color: rgb(255, 255, 255,0.2);
+}
+
+h1{
+    font-size: xx-large;
+    font-weight: 500;
+}
+label{
+    font-size: x-large;
+    margin: 10px;
+}
+p{
+    font-size: large;
+    margin: 10px;
+    display: block;
+    
+}
+.centro{	
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-wrap: wrap;
+    width: 100%;
+    
+  }
+
+
+
+
+.comenzarBtn{
+    width: 200px;
+    background-color: rgb(125, 146, 240);
+    font-size: large;
+}
+
+.centrarItem{
+    position: relative;
+    left: 25%;
+}
+
+
+
+
+button {
+    color: white;
+    padding: 8px 20px;
+    margin: 20px 0;
+    width: 50%;
+    background-color:  rgb(125, 146, 240);
+
+}
