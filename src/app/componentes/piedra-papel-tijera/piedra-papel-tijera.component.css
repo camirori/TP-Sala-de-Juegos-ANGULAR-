@@ -42,6 +42,7 @@ p{
 .containerInicio{
     width: 100%;
     height: 280px;
+    border-radius: 1%;
 }
 .comenzarBtn{
     width: 200px;

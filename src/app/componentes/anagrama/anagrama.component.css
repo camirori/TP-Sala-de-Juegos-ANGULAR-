@@ -13,3 +13,78 @@
     align-items: center;
     flex-wrap: wrap;*/
 }
+
+h1{
+    font-size: xx-large;
+    font-weight: 500;
+}
+p{
+    font-size: medium;  
+}
+
+
+.centro{	
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%
+}
+.containerInicio{
+    text-align: center;
+    height: 280px;
+    background:rgb(255, 255, 255,0.85);
+    border-radius: 1%;
+}
+.comenzarBtn{
+    width: 200px;
+    background-color: rgb(125, 146, 240);
+    font-size: large;
+}
+
+
+form {
+    min-width: 350px;
+    max-width: 800px;
+    padding: 30px;
+    background:rgb(255, 255, 255,0.85);
+    border-radius: 1%;
+}
+
+label{
+    font-size: x-large;
+    margin: 10px;
+}
+
+mat-form-field{
+    width: 100%;
+}
+input {
+    text-align: center;
+    width: 100%;
+    padding: 2px;
+   /* margin: 10px;
+    display: inline-block;
+    border: 1px solid rgb(230, 230, 230);*/
+    font-size: x-large;
+}
+
+button {
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0;
+    width: 100%;
+    background-color:  rgb(125, 146, 240);
+}
+
+/*button:hover {
+    opacity: 0.8;
+
+}*/
+
+
+.centrarItem{
+    position: relative;
+    left: 25%;
+}

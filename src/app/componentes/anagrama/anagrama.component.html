@@ -1,3 +1,35 @@
 <div class="containerJuego" >
-<p>anagrama works!</p>
+    <div style="text-align:center">
+        <h1>
+          Anagrama
+        </h1>
+    </div>
+    
+      <!--Comenzar-->
+    <div class="centro containerInicio" *ngIf="juego == undefined">
+        <p>Debés ingresar una palabra que incluya todas las letras de la palabra dada</p>
+        <button mat-raised-button class="comenzarBtn" (click)="nuevoJuego()">Comenzar</button>
+    </div>
+    
+    <!--Juego-->
+    <div class="centro">
+        <form *ngIf="juego != undefined" name="juego" class="centro">
+    
+            <p>Palabra: </p><label>{{juego.palabraElegida}}</label><br>
+            <p>Ingresa el anagrama: </p>
+            <mat-form-field> 
+                <input matInput [(ngModel)]="palabraIngresada" name="palabraIngresada" type="text"/><br>
+            </mat-form-field> 
+            <!--Resultado-->
+            <div *ngIf="mensaje!=undefined">
+            <label>{{mensaje}}</label><br>
+            <!--label>Intentos:</label><label>{{contador}}</label--><br>
+            </div>  
+
+            <button mat-raised-button *ngIf="!gano" (click)="verificar()">Verificar</button>
+            <button mat-raised-button (click)="nuevoJuego()">Nueva palabra</button>
+    
+        </form>
+    
+    </div>
 </div>
