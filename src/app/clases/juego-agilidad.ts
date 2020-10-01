@@ -7,9 +7,10 @@ export class JuegoAgilidad extends  Juego{
     operador: String;
     respuesta: Number;
 
-    constructor(nombre?: string, gano?: boolean, jugador?:string) {
-      super("Agilidad aritmetica",gano,jugador);  
+    constructor(jugador?:string) {
+      super("Agilidad aritmetica",jugador);  
       this.generarOperacion();
+      //console.log(this);
     }
 
     generarOperacion(){
@@ -41,14 +42,21 @@ export class JuegoAgilidad extends  Juego{
 
     public verificar():boolean{
       if (this.numeroIngresado == this.respuesta) {
-        this.gano = true;
+        this.Resultado = true;
         return true;          
       } else {
+        this.Resultado=false;
         return false;
       }
     }
 
     public calcularPuntaje(tiempo: any){
+      if(this.Resultado){
+        let puntajePerfectoMenosTiempo=1000-(tiempo*20);
+        this.Puntaje=puntajePerfectoMenosTiempo<0? 10:puntajePerfectoMenosTiempo;        
+      }
+      else
+        this.Puntaje=0;
 
 
     }

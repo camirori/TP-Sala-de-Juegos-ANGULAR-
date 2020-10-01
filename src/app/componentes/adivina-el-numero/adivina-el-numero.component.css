@@ -49,9 +49,9 @@ label{
 }
 
 input {
-    width: 80px;
+    width: 60%;
     padding: 12px;
-    margin: 10px;
+    margin: 0px;
     display: inline-block;
     border: 1px solid rgb(230, 230, 230);
     box-sizing: border-box;
@@ -60,9 +60,10 @@ input {
 
 button {
     color: white;
-    padding: 14px 20px;
+    text-align: center;
+    padding: 14px 15px;
     margin: 20px 0;
-    width: 50%;
+    width: 60%;
     background-color:  rgb(125, 146, 240);
 }
 
@@ -74,7 +75,7 @@ button {
 
 .centrarItem{
     position: relative;
-    left: 25%;
+    left: 20%;
 }
 
 

@@ -8,10 +8,10 @@ export class JuegoMemotest extends Juego {
 
     tarjetas={0: false, 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false};
 
-    resultado;      
+    incorrectas=0;      
 
-    constructor(nombre?: string, gano?: boolean, jugador?:string) {
-        super("Memotest",gano,jugador);  
+    constructor( jugador?:string) {
+        super("Memotest",jugador);  
         this.nuevoJuego();
     }
 
@@ -37,20 +37,29 @@ export class JuegoMemotest extends Juego {
             this.tarjetas[this.casilleros[casillero1]]=true;                //no volver a girar y disable
             return true;
         }
+        this.incorrectas++;
         return false;                                                       //volver a girar y habilitar boton
     }
 
     public verificar(){
         for(let tarjeta in this.tarjetas){
-            if(this.tarjetas[tarjeta]==false)
-                return false;            //seguir jugando
+            if(this.tarjetas[tarjeta]==false){
+                return false;            //seguir jugando                
+            }
         }
-        this.resultado=0;
+        this.Resultado=true;
+        this.calcularPuntaje();
         return  true;          //gano
 
     }
 
-    public calcularPuntaje(valorLineaGanadora){
+    public calcularPuntaje(){
+        if(this.Resultado){
+            let puntajePerfectoMenosIntentos=1000-(this.incorrectas*10);
+            this.Puntaje=puntajePerfectoMenosIntentos<0? 10:puntajePerfectoMenosIntentos;            
+        }
+        else
+            this.Puntaje=0;
 
 
     }

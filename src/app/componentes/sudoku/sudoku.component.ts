@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoSudoku } from 'src/app/clases/juego-sudoku';
+import { AuthService } from '../../servicios/auth.service';
+import { JuegosPuntajesService } from '../../servicios/juegos-puntajes.service';
+import { BreakpointObserver, BreakpointState, Breakpoints} from '@angular/cdk/layout';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sudoku',
@@ -10,11 +14,43 @@ export class SudokuComponent implements OnInit {
   juego:  JuegoSudoku;
   mensaje: string;
   tiles;
+  tiempo;
+  timer;
+  email;
 
-  constructor() { }
+  width;
+  left;
+
+
+  constructor(private auth: AuthService,private puntaje: JuegosPuntajesService,
+        public breakpointObserver: BreakpointObserver,private route: Router) { 
+          if(localStorage.getItem('isLoggedIn')=='1')
+          this.email=localStorage.getItem('email');
+        else if(sessionStorage.getItem('isLoggedIn')=='1')
+          this.email=sessionStorage.getItem('email');
+        else
+          this.route.navigate(['/Juegos/LoginRequired']);
+  }
 
   ngOnInit(): void {
     this.nuevoJuego();
+
+    this.breakpointObserver
+        .observe([Breakpoints.Handset])
+        .subscribe((state: BreakpointState) => {
+          if (state.matches) {
+            this.width='100%'
+            this.left='0';
+          }
+          else{
+            this.width='50%';
+            this.left='25%';
+          }
+        });
+  }
+
+  ngOnDestroy(){
+    clearInterval(this.timer);
   }
 
   grilla(){
@@ -42,10 +78,25 @@ export class SudokuComponent implements OnInit {
 
   nuevoJuego(){
     console.log('Nuevo juego');
+
+    clearInterval(this.timer);
+
+    this.juego= new JuegoSudoku(2,this.email);
     this.grilla();
-    this.juego= new JuegoSudoku(2);
     this.generarAyuda();
     this.mensaje=undefined;
+    console.log(this.juego);
+
+    this.tiempo=50;
+    this.timer= setInterval(()=>{
+      this.tiempo--;
+      if(this.tiempo==0){
+        clearInterval(this.timer);
+        this.mensaje="Se acabo el tiempo";
+        this.juego.calcularPuntaje(0);
+        this.puntaje.guardar(this.juego);
+      }
+    },1000);  
   }
 
   generarAyuda(){
@@ -67,10 +118,18 @@ export class SudokuComponent implements OnInit {
     console.log('Verificando input:')
     console.log(this.juego.numerosIngresados);
 
+
     if(this.juego.numerosIngresados.includes('') || this.juego.numerosIngresados.includes(null))
       this.mensaje='Aún hay casilleros vacíos';
-    else if(this.juego.verificar())
-      this.mensaje='Ganaste!';
+    else if(this.juego.numerosIngresados.some((val)=> val<1 || val>4)) 
+      this.mensaje='Solo se aceptan numeros entre 1 y 4';
+    else if(this.juego.verificar()){
+      clearInterval(this.timer);
+      this.mensaje='Ganaste!';      
+      console.log(this.juego.Resultado);
+      this.juego.calcularPuntaje(50-this.tiempo);
+      this.puntaje.guardar(this.juego);
+    }
     else
       this.mensaje='Incorrecto';
 

@@ -5,7 +5,7 @@
 
 </div-->
 
-<table class="table table-condensed">
+<!--table class="table table-condensed">
     <thead>
       <tr>
         <th>Juego</th>
@@ -22,4 +22,52 @@
       </tr>
      
     </tbody>
-  </table>
+  </table-->
+
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+  
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort #table>
+  
+      <!-- Jugador Column -->
+      <ng-container matColumnDef="Jugador">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Jugador </th>
+        <td mat-cell *matCellDef="let row"> {{row.Jugador}} </td>
+      </ng-container>
+  
+      <!-- Juego Column -->
+      <ng-container matColumnDef="Juego">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Juego </th>
+        <td mat-cell *matCellDef="let row"> {{row.Juego}} </td>
+      </ng-container>
+  
+      <!-- Resultado Column -->
+      <ng-container matColumnDef="Resultado">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Resultado </th>
+        <td mat-cell *matCellDef="let row"> {{row.Resultado? 'Gano':'Perdio'}} </td>
+      </ng-container>
+  
+      <!-- Puntaje Column -->
+      <ng-container matColumnDef="Puntaje">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Puntaje </th>
+        <td mat-cell *matCellDef="let row" > {{row.Puntaje}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  
+    <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+  </div>
+
+
+

@@ -4,9 +4,9 @@
             Memotest
         </h1>
     </div>
-    <div class="containerInicio centrarItem" >
+    <div class="containerInicio centrarItem" [style.width]="width" [style.left]="left">
         <!--Juego-->
-        <div class="grilla centrarItem">
+        <div class="grilla centrarItem" [style.width]="width" [style.left]="left">
         <mat-grid-list cols="4" rowHeight="4:4">
             <mat-grid-tile
                 *ngFor="let tile of tiles"

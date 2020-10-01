@@ -22,8 +22,10 @@ import { AgilidadAritmeticaComponent } from './componentes/agilidad-aritmetica/a
 import { AnagramaComponent } from './componentes/anagrama/anagrama.component';
 import { InputJugadoresComponent } from './componentes/input-jugadores/input-jugadores.component';
 import { JugadoresListadoComponent } from './componentes/jugadores-listado/jugadores-listado.component';
+//import { JugadoresListadoDetalleComponent } from './componentes/jugadores-listado-detalle/jugadores-listado-detalle.component';
 import { ListadoComponent } from './componentes/listado/listado.component';
 import { ListadoDeResultadosComponent } from './componentes/listado-de-resultados/listado-de-resultados.component';
+
 
 import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
@@ -35,6 +37,7 @@ import { JuegoServiceService } from './servicios/juego-service.service';
 //import { MiHttpService } from './servicios/mi-http.service'; 
 import { MiHttpService } from './servicios/mi-http/mi-http.service';
 import { AuthService } from './servicios/auth.service'; 
+import { JuegosPuntajesService } from './servicios/juegos-puntajes.service'; 
 
 
 import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/piedra-papel-tijera.component';
@@ -47,7 +50,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { SudokuComponent } from './componentes/sudoku/sudoku.component';
-import { RegistroFormComponent } from './componentes/registro-form/registro-form.component'; 
+import { RegistroFormComponent } from './componentes/registro-form/registro-form.component';
+import { NoAutorizadoComponent } from './componentes/no-autorizado/no-autorizado.component';
+
 
 
 
@@ -77,7 +82,9 @@ import { RegistroFormComponent } from './componentes/registro-form/registro-form
     TaTeTiComponent,
     MemotestComponent,
     SudokuComponent,
-    RegistroFormComponent
+    RegistroFormComponent,
+    NoAutorizadoComponent,
+    //JugadoresListadoDetalleComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +102,7 @@ import { RegistroFormComponent } from './componentes/registro-form/registro-form
     MatListModule,
     FirebaseModule
   ],
-  providers: [JuegoServiceService, MiHttpService,ArchivosJugadoresService,JugadoresService, AuthService],
+  providers: [JuegoServiceService, MiHttpService,ArchivosJugadoresService,JugadoresService, AuthService, JuegosPuntajesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

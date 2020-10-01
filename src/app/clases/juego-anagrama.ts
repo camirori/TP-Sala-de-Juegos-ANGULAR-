@@ -4,7 +4,7 @@ export class JuegoAnagrama extends  Juego {
     palabraElegida:string;
     anagramaElegido: string[];
     palabraIngresada: string;
-    resultado;
+
     anagramas=[
       ['REFINAMIENTO','ENFRIAMIENTO'],
       ['ENERGETICAMENTE','GENERICAMENTE','ENERGÉTICAMENTE','GENÉRICAMENTE'],
@@ -19,13 +19,12 @@ export class JuegoAnagrama extends  Juego {
     ];
 
 
-    constructor(nombre?: string, gano?: boolean, jugador?:string) {
-        super("Anagrama",gano,jugador);  
+    constructor(jugador?:string) {
+        super("Anagrama",jugador);  
         this.nuevoJuego();
     }
   
     nuevoJuego(){
-
       let i;
       let j;
       do{
@@ -38,24 +37,32 @@ export class JuegoAnagrama extends  Juego {
       console.log(this.anagramas[i][j]);
       this.anagramaElegido=this.anagramas[i];
       this.palabraElegida=this.anagramas[i][j];
-
-
     }
-
 
 
     public verificar():any{
       console.log('Verificando palabra');
-      if(this.anagramaElegido.includes(this.palabraIngresada.toUpperCase()))
-        return true;  
-      else  
-        return false;
+      if(this.anagramaElegido.includes(this.palabraIngresada.toUpperCase())){
+        this.Resultado=true;
+        return true;          
+      }
+      else {
+        this.Resultado=false;
+         return false;       
+      }
+
     }
 
 
 
       
-    public calcularPuntaje(valorLineaGanadora){
+    public calcularPuntaje(tiempo){
+      if(this.Resultado){
+        let puntajePerfectoMenosTiempo=1000-(tiempo*10);
+        this.Puntaje=puntajePerfectoMenosTiempo<0? 10:puntajePerfectoMenosTiempo;        
+      }
+      else
+        this.Puntaje=0;
 
 
     }

@@ -4,16 +4,17 @@
             Sudoku
         </h1>
     </div>
-    <div class="containerInicio centrarItem" >
+    <div *ngIf="juego!=undefined" class="containerInicio centrarItem" [style.width]="width" [style.left]="left">
+        <p class="tiempo">{{tiempo}}</p>
         <!--Juego-->
-        <div class="grilla centrarItem">
+        <div class="grilla centrarItem" [style.width]="width" [style.left]="left">
         <mat-grid-list cols="4" rowHeight="4:4">
             <mat-grid-tile
                 *ngFor="let tile of tiles"
                 [colspan]="tile.cols"
                 [rowspan]="tile.rows"
                 >
-                <input type="number" [disabled]="!tile.habilitar" class="celda" [style.background]="tile.color" 
+                <input type="number" min="1" max="4" [disabled]="!tile.habilitar" class="celda" [style.background]="tile.color" 
                     [(ngModel)]="tile.input" name="input">
             </mat-grid-tile>
         </mat-grid-list>
@@ -23,7 +24,9 @@
         <div *ngIf="mensaje!=undefined" class="centro">
             <label >{{mensaje}}</label>
         </div> 
-        <button class="centrarItem" style="left: 25%;" mat-raised-button (click)="verificar()">Verificar</button><br>
+        
+        <button *ngIf="juego.Resultado!=true && tiempo!=0" class="centrarItem" style="left: 25%;" mat-raised-button (click)="verificar()">Verificar</button><br>
+        <button *ngIf="juego.Resultado!=true && tiempo!=0" class="centrarItem" style="left: 25%;" mat-raised-button (click)="mostrarRespuesta()">Mostrar respuesta</button><br>
         <button class="centrarItem" style="left: 25%;" mat-raised-button (click)="nuevoJuego()">Nueva partida</button>
     </div>
 </div>

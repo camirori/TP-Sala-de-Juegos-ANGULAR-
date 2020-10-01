@@ -14,7 +14,7 @@
     <!--Juego-->
     <div class="centro">
         <form *ngIf="juego != undefined" name="juego" class="centro">
-    
+            <p class="tiempo">{{tiempo}}</p>
             <p>Palabra: </p><label>{{juego.palabraElegida}}</label><br>
             <p>Ingresa el anagrama: </p>
             <mat-form-field> 
@@ -26,7 +26,7 @@
             <!--label>Intentos:</label><label>{{contador}}</label--><br>
             </div>  
 
-            <button mat-raised-button *ngIf="!gano" (click)="verificar()">Verificar</button>
+            <button mat-raised-button *ngIf="!juego.Resultado && tiempo>0" (click)="verificar()">Verificar</button>
             <button mat-raised-button (click)="nuevoJuego()">Nueva palabra</button>
     
         </form>

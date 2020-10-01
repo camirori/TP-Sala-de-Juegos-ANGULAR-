@@ -9,8 +9,8 @@ export class JuegoPiedraPapelTijera extends Juego{
     ContadorRondas=0;
     resultado;
 
-    constructor(nombre?: string, gano?: boolean, jugador?:string) {
-      super("Piedra, papel o tijera",gano,jugador);  
+    constructor( jugador?:string) {
+      super("Piedra, papel o tijera",jugador);  
       this.nuevoJuego();
     }
 
@@ -75,6 +75,7 @@ export class JuegoPiedraPapelTijera extends Juego{
 
     public verificarResultado(){
       this.resultado=this.ContadorDeGanadas-this.ContadorDePerdidas;
+      this.calcularPuntaje();
       return this.resultado;
       //<0 perdio
       //==0 empate
@@ -83,8 +84,13 @@ export class JuegoPiedraPapelTijera extends Juego{
     }
 
     public calcularPuntaje(){
-
-
+      if(this.resultado<0){
+        this.Resultado=false;
+        this.Puntaje=0;
+      }else if(this.resultado>=0){
+        this.Resultado=true;
+        this.Puntaje=(this.ContadorDeGanadas*333)+(this.ContadorDeEmpates*150);
+      }
     }
 
 

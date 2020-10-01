@@ -15,9 +15,9 @@
   <form name="juego" *ngIf="nuevoJuego!=undefined" class="centro">
 
     <label>{{nuevoJuego.operando1}}</label><label>{{nuevoJuego.operador}}</label><label>{{nuevoJuego.operando2}}</label>
-    <label>=</label><input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" />
+    <label>=</label><input [(ngModel)]="nuevoJuego.numeroIngresado" name="numeroIngresado" type="text" onclick="document.execCommand('selectall',null,false);"/>
          
-    <br><button mat-raised-button (click)="verificar()" *ngIf="!ocultarVerificar">Verificar {{Tiempo}} </button><br>
+    <br><button mat-raised-button style="align-self: baseline;" (click)="verificar()" *ngIf="!ocultarVerificar">Verificar {{Tiempo}} </button><br>
 
 
   
@@ -29,7 +29,7 @@
 
 
     <!--Nuevo juego-->
-    <button mat-raised-button *ngIf="nuevoJuego.gano || Tiempo==0" (click)="NuevoJuego()">Nueva operacion</button>
+    <button mat-raised-button *ngIf="nuevoJuego.Resultado || Tiempo==0" (click)="NuevoJuego()">Nueva operacion</button>
 
     
   </form>

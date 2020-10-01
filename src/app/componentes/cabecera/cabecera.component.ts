@@ -15,6 +15,7 @@ export class CabeceraComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit(): void {
+
   }
 
   isHome(){
@@ -23,7 +24,10 @@ export class CabeceraComponent implements OnInit {
   }
 
   isLoggedIn(){
-    return this.authService.isLoggedIn;
+    if(sessionStorage.getItem('isLoggedIn')=='1' || localStorage.getItem('isLoggedIn')=='1')
+      return true;
+    else 
+      return false;
   }
 
   logout(){

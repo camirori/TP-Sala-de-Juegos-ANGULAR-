@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter,Input } from '@angular/core';
 import {FormControl, Validators, ValidatorFn, AbstractControl, FormGroup, ValidationErrors} from '@angular/forms';
 import { Jugador } from 'src/app/clases/jugador';
 import { AuthService } from '../../servicios/auth.service'; 
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 
 @Component({
@@ -31,7 +32,8 @@ export class RegistroFormComponent implements OnInit {
     this.validateAreEqual.bind(this)
   ]);
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private router: Router,) { }
 
   ngOnInit(): void {
     this.checked = true;
@@ -80,8 +82,17 @@ export class RegistroFormComponent implements OnInit {
       let email = this.emailFormControl.value;
       let clave = this.passwdFormControl.value;  
       let user = new Jugador(email,clave);
-      let rdo = this.authService.register(user).then(()=>this.hideForm()).catch(err=>this.errorMsj=err);
+      let rdo = this.authService.register(user).then(()=>{
+        this.hideForm();
+        let user = new Jugador(email,clave);
+        this.authService.signIn(user,this.checked)
+        .then(()=>this.router.navigate(['/Principal']))
+        .catch(err=>{
+          console.log(err);
+        });
+      }).catch(err=>this.errorMsj=err);
       console.log(rdo);
+
     }
   }
 

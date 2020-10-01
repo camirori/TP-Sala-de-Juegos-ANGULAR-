@@ -1,13 +1,23 @@
-
+<app-cabecera>  </app-cabecera>
 <!--input type="button" (click)="llamaService()" class="btn btn-info" value="Pulsame" > 
 <input type="button" (click)="llamaServicePromesa()" class="btn btn-info" value="Pulsame Promesa" --> 
 
-<!-- Centered Pills -->
-<ul class="nav nav-pills nav-justified">
+
+<!--ul class="nav nav-pills nav-justified">
     <li class="active"><a routerLink="/Principal">Sala de Juegos</a></li>
     <li><a (click)="llamaService()">Servicio</a></li>
     <li><a (click)="llamaServicePromesa()">Serv Promesa</a></li>
     <li><a (click)="llamaServicePromesa()">Serv observable</a></li>
-  </ul>
-  
-<app-listado-de-resultados [listado]="listadoParaCompartir"> </app-listado-de-resultados>
+  </ul-->
+
+  <mat-tab-group selectedIndex={{tab}}>
+    <mat-tab label="Listado de resultados"> 
+      <app-listado-de-resultados *ngIf="listadoPuntajes!=undefined" [listado]="listadoPuntajes" > </app-listado-de-resultados>
+    </mat-tab>
+    <mat-tab label="Ranking jugadores">
+      <app-jugadores-listado *ngIf="listadoPuntajes!=undefined" [listadoRaw]="listadoPuntajes" > </app-jugadores-listado>  
+    </mat-tab>
+  </mat-tab-group>
+
+
+

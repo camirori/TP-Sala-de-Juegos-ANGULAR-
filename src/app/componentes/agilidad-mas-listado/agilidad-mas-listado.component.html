@@ -1,3 +1,6 @@
-<app-agilidad-aritmetica (enviarJuego)="tomarJuegoTerminado($event)">   </app-agilidad-aritmetica> 
-<h1> Listado de Resultados </h1>
-<app-listado-de-resultados [listado]="listadoParaCompartir"> </app-listado-de-resultados>
+<app-agilidad-aritmetica (enviarJuegoEvent)="tomarJuegoTerminado($event)">   </app-agilidad-aritmetica> 
+<app-listado [nuevoPuntaje]="nuevoJuego"> </app-listado>
+
+
+<!--app-agilidad-aritmetica>   </app-agilidad-aritmetica> 
+<app-listado > </app-listado-->

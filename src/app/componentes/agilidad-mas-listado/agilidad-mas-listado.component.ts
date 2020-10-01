@@ -7,15 +7,25 @@ import { Juego } from '../../clases/juego';
   styleUrls: ['./agilidad-mas-listado.component.css']
 })
 export class AgilidadMasListadoComponent implements OnInit {
-  public listadoParaCompartir: Array<any>;
-  constructor() { this.listadoParaCompartir = new Array<any>()}
+  public nuevoJuego: Juego;
+  constructor() { 
+    
+  }
 
   ngOnInit(): void {
   }
   
   tomarJuegoTerminado(juego: Juego){
-    this.listadoParaCompartir.push(juego);
-    console.info("en app",this.listadoParaCompartir);
+    this.nuevoJuego=juego;
+    console.info("Evento recibido");
+
+
+    /* let nuevaRef= [juego];                      //cambio la referencia para que el onChanges detecte el cambio
+    for(let item of this.listadoParaCompartir){
+      nuevaRef.push(item);
+    }
+    this.listadoParaCompartir=nuevaRef;
+    console.info("Evento recibido",this.listadoParaCompartir); */
   }
 
 }

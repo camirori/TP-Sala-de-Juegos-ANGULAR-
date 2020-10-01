@@ -21,6 +21,10 @@ export class LoginComponent implements OnInit {
   logeando=true;
   ProgresoDeAncho:string;
   errorMsj= '';
+  checked: boolean = true;
+  mostrarClaveOlvidada=false;
+  mailEnviadoMsj='';
+
 
   clase="progress-bar progress-bar-info progress-bar-striped ";
 
@@ -53,18 +57,29 @@ export class LoginComponent implements OnInit {
   Entrar() {
     this.logeando=true;
     if (this.usuario && this.clave) {
+      console.log(this.checked);
       let user = new Jugador(this.usuario,this.clave);
-      let rdo = this.authService.signIn(user).then(()=>{
-        this.authService.isLoggedIn=true;
-        this.ReiniciarBarra();
-   
-        this.router.navigate(['/Principal']);
-      }).catch(err=>{
+
+      let rdo = this.authService.signIn(user,this.checked).then(()=>{
+          this.ReiniciarBarra();
+          this.router.navigate(['/Principal']);}
+      ).catch(err=>{
         this.errorMsj=err;
         this.ReiniciarBarra();
       });
       console.log(rdo);
     }
+  }
+
+  RestablecerClave(){
+    this.mailEnviadoMsj='';
+    this.errorMsj='';
+    if(this.usuario){
+      this.authService.resetClave(this.usuario).then(()=>
+        this.mailEnviadoMsj="E-mail de restablecimiento de contraseña enviado"
+      ).catch((err)=>this.errorMsj=err);
+    }
+
   }
 
   ReiniciarBarra(){

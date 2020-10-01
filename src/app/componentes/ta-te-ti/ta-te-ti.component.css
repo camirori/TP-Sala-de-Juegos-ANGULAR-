@@ -15,14 +15,12 @@
 }
 
 .containerInicio{
-    max-width: 60%;
     max-height: 70%;
     background:rgb(255, 255, 255,0.8);
     border-radius: 1%;
 }
 
 .grilla{
-    max-width: 60%;
     max-height: 50%;
 
     text-align: center;
@@ -93,7 +91,7 @@ p{
 
 button {
     color: white;
-    padding: 8px 20px;
+    /*padding: 8px 20px;*/
     margin: 20px 0;
     width: 50%;
     background-color:  rgb(125, 146, 240);

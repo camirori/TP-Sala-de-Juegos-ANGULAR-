@@ -15,18 +15,18 @@
   <div class="centro">
   <form *ngIf="nuevoJuego != null" name="juego">
 
-    <label>Número secreto: </label><label *ngIf="!nuevoJuego.gano"> ?</label><label *ngIf="nuevoJuego.gano">{{nuevoJuego.numeroSecreto}}</label><br>
-    <label>Ingresa un número entre 1 y 100: </label><input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text"/><br>
-    <button mat-raised-button *ngIf="!nuevoJuego.gano" (click)="verificar()" class="centrarItem">Verificar</button>
+    <label>Número secreto: </label><label *ngIf="!nuevoJuego.Resultado"> ?</label><label *ngIf="nuevoJuego.Resultado">{{nuevoJuego.numeroSecreto}}</label><br>
+    <label>Ingresa un número entre 1 y 100: </label><br><input class="centrarItem" [(ngModel)]="nuevoJuego.numeroIngresado" name="numeroIngresado" type="text" onclick="document.execCommand('selectall',null,false);"/><br>
+    <button mat-raised-button *ngIf="!nuevoJuego.Resultado" (click)="verificar()" class="centrarItem">Verificar</button>
     
     <!--Resultado-->
-    <div *ngIf="nuevoJuego.gano">
+    <div *ngIf="nuevoJuego.Resultado">
       <label>Ganaste!!!</label><br>
       <label>Intentos:</label><label>{{contador}}</label><br>
 
     </div>  
 
-    <button mat-raised-button class="centrarItem" *ngIf="nuevoJuego.gano" (click)="generarnumero()">Nuevo número secreto</button>
+    <button mat-raised-button class="centrarItem" *ngIf="nuevoJuego.Resultado" (click)="generarnumero()">Nuevo número secreto</button>
 
 
   </form>

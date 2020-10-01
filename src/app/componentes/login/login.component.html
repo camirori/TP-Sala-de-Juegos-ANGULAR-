@@ -2,7 +2,7 @@
 <div class="background">
 <div style="background-color:rgb(255, 255, 255, 0.8);">
 <div class="container centro" >
-    <form class="example-form" action="return true;">
+    <form class="example-form" *ngIf="!mostrarClaveOlvidada" action="return true;">
       <button mat-fab matTooltip="Autocompletar" class="alert" (click)="Autocompletar()">
         <span class="material-icons">
         announcement
@@ -29,8 +29,40 @@
           </div>
           <p style="color: red;">{{errorMsj}}</p>
          
-          <input type="checkbox" checked="checked"> Recordar mis datos          
-          <span class="psw">Te olvidaste <a href="#">la clave?</a></span>
+          <input type="checkbox" [(ngModel)]="checked" name="checked"> Recordar mis datos          
+          <span class="psw">Te olvidaste <a (click)="mostrarClaveOlvidada=!mostrarClaveOlvidada">la clave?</a></span>
+      </div>
+  
+      <div class="container centro">
+          <button mat-button type="button" class="boton cancelbtn" routerLink="/Principal">Cancelar</button>
+          <button mat-button type="button" class="boton aceptbtn" routerLink="/Registro" >Registrarse</button>
+
+      </div>
+    </form>
+
+
+
+    <form class="example-form" *ngIf="mostrarClaveOlvidada" >
+      <button mat-fab matTooltip="Autocompletar" class="alert" (click)="Autocompletar()">
+        <span class="material-icons">
+        announcement
+        </span></button>
+      <div class="imgcontainer">
+          <img src="./assets/imagenes/login.png" alt="Avatar" class="avatar" >
+      </div>
+  
+      <div class="container">
+        <mat-form-field> 
+          <mat-label>Usuario</mat-label>
+          <input matInput type="text" placeholder="Usuario"  [(ngModel)]="usuario"  name="uname" required>
+          </mat-form-field> 
+          
+          
+          <button mat-flat-button class="boton" style="width: 48%; margin: 2px; background-color: #5474d3;" (click)="mostrarClaveOlvidada=!mostrarClaveOlvidada" >Volver</button>
+          <button mat-flat-button class="boton" style="width: 48%; margin: 2px;" (click)="RestablecerClave()" >Recuperar clave</button>
+          <p>{{mailEnviadoMsj}}</p>
+          <p style="color: red;">{{errorMsj}}</p>
+         
       </div>
   
       <div class="container centro">

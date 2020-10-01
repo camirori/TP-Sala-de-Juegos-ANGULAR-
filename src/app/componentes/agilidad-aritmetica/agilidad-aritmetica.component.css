@@ -19,7 +19,7 @@ h1{
     font-weight: 500;
 }
 label{
-    font-size: xx-large;
+    font-size: x-large;
     margin: 10px;
 }
 p{
@@ -54,7 +54,7 @@ p{
 }
 
 form {
-    max-width: 600px;
+    max-width: 500px;
     padding: 30px;
     background:rgb(255, 255, 255,0.8);
     border-radius: 1%;
@@ -76,5 +76,6 @@ button {
     margin: 20px 0;
     width: 50%;
     background-color:  rgb(125, 146, 240);
+
 
 }

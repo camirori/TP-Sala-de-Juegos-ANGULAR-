@@ -7,17 +7,19 @@ mat-grid-tile {
   }
 
 
+
 .container{
-    background: rgb(206, 185, 245);
+    background: rgb(108, 124, 192);
     text-align: center;
     padding-bottom: 10px;
     padding-top: 10px;
+    border-radius: 3%;
 }
 
     
 .itemMenu{
     background-color: rgb(253, 253, 253,0.95);
-    padding: 18%;
+    padding: 13%;
     margin: auto;
     height: 100%;
     width: 100%;
@@ -35,7 +37,7 @@ a:hover {
 
 h2,h4,p{
     position: static;
-    top: 50%;
+    top: 40%;
     left: 50%;
     text-align: center;
 }

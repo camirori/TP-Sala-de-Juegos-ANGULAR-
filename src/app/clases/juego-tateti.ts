@@ -17,8 +17,8 @@ export class JuegoTateti extends Juego{
 
     resultado;      //0 empate, 
 
-    constructor(nombre?: string, gano?: boolean, jugador?:string) {
-        super("Ta-Te-Ti",gano,jugador);  
+    constructor( jugador?:string) {
+        super("Ta-Te-Ti",jugador);  
         //this.nuevoJuego();
     }
 
@@ -61,7 +61,19 @@ export class JuegoTateti extends Juego{
 
     }
 
-    public calcularPuntaje(valorLineaGanadora){
+    public calcularPuntaje(resultado){
+        if(this.resultado==1){
+            this.Resultado=true;            
+            this.Puntaje=1000;
+        }
+        else if(this.resultado==2){
+            this.Resultado=false;            
+            this.Puntaje=0;
+        }
+        else if(this.resultado==0){
+            this.Resultado=true;
+            this.Puntaje=200;
+        }
 
 
     }

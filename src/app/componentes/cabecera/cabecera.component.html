@@ -6,7 +6,7 @@
         <a routerLink="/QuienSoy" >Quien Soy? <i class="fa fa-user"></i></a>
     </div>
     <ul class="nav navbar-nav" style="float: right;">
-        <li *ngIf="!isHome()"><a routerLink="/Principal"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li *ngIf="!isHome()"><a routerLink="/Principal"><span class="glyphicon glyphicon-home" ></span> Home</a></li>
         <li *ngIf="!isLoggedIn()"><a routerLink="/Registro"><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
         <li *ngIf="isLoggedIn()"><a routerLink="/Configuracion"><span class="glyphicon glyphicon-user"></span> Cuenta</a></li>
         <li *ngIf="!isLoggedIn()"><a routerLink="/Login"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>

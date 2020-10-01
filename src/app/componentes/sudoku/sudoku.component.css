@@ -15,15 +15,16 @@
 }
 
 .containerInicio{
-    max-width: 50%;
-    max-height: 70%;
+    
+    max-height: 75%;
     background:rgb(255, 255, 255,0.8);
+    padding: 5px;
 }
 
 .grilla{
-    width: 50%;
+    
     text-align: center;
-    padding: 10px;
+    padding: 40px 0px 5px 0px;
 }
 
 
@@ -92,9 +93,26 @@ p{
 
 button {
     color: white;
-    padding: 8px 20px;
-    margin: 20px 0;
+    padding: 5px 20px;
+    margin: 2px 0;
     width: 50%;
     background-color:  rgb(125, 146, 240);
+
+}
+button.hover{
+    background-color:  rgb(107, 127, 214);  
+}
+
+.tiempo{
+    background-color: rgb(199, 210, 255);
+    height: 30px;
+    width: 30px;
+    float: right;
+    clear:left;
+    align-self: flex-end;
+    font-size: small;
+    text-align: center;
+    padding-top: 3px;
+    border-radius: 50%;
 
 }

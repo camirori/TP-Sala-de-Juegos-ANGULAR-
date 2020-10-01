@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoPiedraPapelTijera } from 'src/app/clases/juego-piedra-papel-tijera';
+import { AuthService } from '../../servicios/auth.service';
+import { JuegosPuntajesService } from '../../servicios/juegos-puntajes.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-piedra-papel-tijera',
@@ -11,18 +14,27 @@ export class PiedraPapelTijeraComponent implements OnInit {
   mensaje: string;
   bloquearOpciones: boolean;
   resultado:number;
+  email;
 
-  constructor() { }
+  constructor(private auth: AuthService,private puntaje: JuegosPuntajesService,private route: Router) { 
+    if(localStorage.getItem('isLoggedIn')=='1')
+      this.email=localStorage.getItem('email');
+    else if(sessionStorage.getItem('isLoggedIn')=='1')
+      this.email=sessionStorage.getItem('email');
+    else
+      this.route.navigate(['/Juegos/LoginRequired']);
+  }
 
   ngOnInit(): void {
   }
 
   iniciarJuego(){
-    this.juego=new JuegoPiedraPapelTijera();
-    this.juego.nuevaRonda();
-    this.bloquearOpciones=false;
-    this.resultado=undefined;
-    this.mensaje=undefined;
+      this.juego=new JuegoPiedraPapelTijera(this.email);
+      this.juego.nuevaRonda();
+      this.bloquearOpciones=false;
+      this.resultado=undefined;
+      this.mensaje=undefined;
+      console.log(this.juego);
 
   }
   verificar(eleccion: number){
@@ -31,13 +43,13 @@ export class PiedraPapelTijeraComponent implements OnInit {
     //mensaje
     switch(this.juego.verificar()){
       case 0:
-        this.mensaje='Perdiste';
+        this.mensaje='Perdiste la ronda';
         break;
       case 1:
-        this.mensaje='Empate';
+        this.mensaje='Ronda empatada';
         break;
       case 2:
-        this.mensaje='Ganaste';
+        this.mensaje='Ganaste la ronda';
         break;
     }
     
@@ -54,10 +66,13 @@ export class PiedraPapelTijeraComponent implements OnInit {
       this.resultado=this.juego.verificarResultado();
       if(this.resultado<0)
         this.mensaje='Perdiste el juego';
-      else if(this.resultado==0)
-          this.mensaje='Juego empatado';
-      else if(this.resultado>0)
-          this.mensaje='Ganaste el juego!';
+      else if(this.resultado==0){
+          this.mensaje='Juego empatado';  
+      }
+      else if(this.resultado>0){
+          this.mensaje='Ganaste el juego!';    
+      }
+      this.puntaje.guardar(this.juego);
     }else{
       this.juego.nuevaRonda(); 
       this.bloquearOpciones=false;     

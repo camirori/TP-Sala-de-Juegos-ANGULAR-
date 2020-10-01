@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoMemotest } from 'src/app/clases/juego-memotest';
+import { AuthService } from '../../servicios/auth.service';
+import { JuegosPuntajesService } from '../../servicios/juegos-puntajes.service';
+import { BreakpointObserver, BreakpointState, Breakpoints} from '@angular/cdk/layout';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-memotest',
@@ -12,11 +16,38 @@ export class MemotestComponent implements OnInit {
   habilitarOpciones: boolean;
   tiles;
   tarjetasElegidas: number[];
+  email;
 
-  constructor() { }
+  width;
+  left;
+
+  constructor(private auth: AuthService,private puntaje: JuegosPuntajesService,
+    public breakpointObserver: BreakpointObserver,private route: Router) { 
+    if(localStorage.getItem('isLoggedIn')=='1')
+      this.email=localStorage.getItem('email');
+    else if(sessionStorage.getItem('isLoggedIn')=='1')
+      this.email=sessionStorage.getItem('email');
+    else
+      this.route.navigate(['/Juegos/LoginRequired']);
+  }
 
   ngOnInit(): void {
     this.nuevoJuego();
+
+
+      this.breakpointObserver
+        .observe([Breakpoints.Handset])
+        .subscribe((state: BreakpointState) => {
+          if (state.matches) {
+            this.width='100%';
+            this.left='0';
+          }
+          else{
+            this.width='60%';
+            this.left='20%';
+          }
+        });
+  
   }
 
   grilla(){
@@ -41,14 +72,15 @@ export class MemotestComponent implements OnInit {
   }
 
   nuevoJuego(){
+
     console.log('Nuevo juego');
     this.grilla();
-    this.juego= new JuegoMemotest();
+    this.juego= new JuegoMemotest(this.email);
     this.asignarImagenes();
     this.mensaje=undefined;
     this.habilitarOpciones=true;
     this.tarjetasElegidas= [];
-
+    console.log(this.juego);
   }
 
   asignarImagenes(){
@@ -122,36 +154,11 @@ export class MemotestComponent implements OnInit {
     //mensaje
     if(this.juego.verificar()){
       this.mensaje='Ganaste!';
+      this.puntaje.guardar(this.juego);
       return false;      
     }
     return true;      //seguir jugando
   }
-
-
-  movimientoJugador(casillero: number){
-    
-    
-    
-    /*
-    if(this.juego.jugadaJugador(casillero)){
-      this.tiles[casillero].disponible=false;
-      this.tiles[casillero].img="url('/assets/imagenes/tateti/X.PNG')";
-    }
-    else  
-      console.log('Error');
-    
-
-    //completar el casillero
-    if(this.verificar())
-      setTimeout(//this.movimientoMaquina
-        ()=>{
-          this.tiles[casillero].disponible=false;
-        }
-        ,2000);*/
-    
-  }
-
-  
 
 
 

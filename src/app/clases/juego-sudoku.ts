@@ -7,7 +7,6 @@ export class JuegoSudoku extends Juego {
     Tabla;
     tablaInput;
     numerosIngresados;
-    gano;
 
     asignarTabla(tamaño){
         //if(tamaño==2){
@@ -101,8 +100,8 @@ export class JuegoSudoku extends Juego {
 
     resultado;      
 
-    constructor(tamaño?: number, nombre?: string, gano?: boolean, jugador?:string,) {
-        super("Memotest",gano,jugador);
+    constructor(tamaño?: number, jugador?:string,) {
+        super("Sudoku",jugador);
         this.asignarTabla(tamaño);
     }
 
@@ -203,7 +202,7 @@ export class JuegoSudoku extends Juego {
                     z++;     
             }
         }
-        this.gano=true;
+        this.Resultado=true;
         return true;
     }
 
@@ -233,7 +232,12 @@ export class JuegoSudoku extends Juego {
     }
 
     public calcularPuntaje(tiempo){
-
+        if(this.Resultado){
+            let puntajePerfectoMenosTiempo=1000-(tiempo*20);
+            this.Puntaje=puntajePerfectoMenosTiempo<0? 10:puntajePerfectoMenosTiempo;            
+        }
+        else
+            this.Puntaje=0;
 
     }
 

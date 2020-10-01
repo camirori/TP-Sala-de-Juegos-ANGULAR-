@@ -73,7 +73,7 @@ input {
 button {
     color: white;
     padding: 14px 20px;
-    margin: 20px 0;
+    margin: 5px 0;
     width: 100%;
     background-color:  rgb(125, 146, 240);
 }
@@ -87,4 +87,16 @@ button {
 .centrarItem{
     position: relative;
     left: 25%;
+}
+
+.tiempo{
+    background-color: rgb(199, 210, 255);
+    height: 30px;
+    width: 30px;
+    float: right;
+    align-self: flex-end;
+    font-size: small;
+    text-align: center;
+    padding-top: 3px;
+    border-radius: 50%;
 }

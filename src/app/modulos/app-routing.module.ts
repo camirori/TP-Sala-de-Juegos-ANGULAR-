@@ -24,17 +24,19 @@ import { PiedraPapelTijeraComponent } from '../componentes/piedra-papel-tijera/p
 import { TaTeTiComponent } from '../componentes/ta-te-ti/ta-te-ti.component';
 import { MemotestComponent } from '../componentes/memotest/memotest.component';
 import { SudokuComponent } from '../componentes/sudoku/sudoku.component';
+import { NoAutorizadoComponent } from '../componentes/no-autorizado/no-autorizado.component';
 
 
 const routes: Routes = [
-  {path: 'Jugadores' , component: JugadoresListadoComponent},
+  
   {path: '' , component: PrincipalComponent},
   {path: 'Login' , component: LoginComponent},
   // {path: 'Mapa' , component: MapaDeGoogleComponent},
   {path: 'QuienSoy' , component: QuienSoyComponent},
   {path: 'Registro' , component: RegistroComponent},
   {path: 'Principal' , component: PrincipalComponent},
-  {path: 'Listado' , component: ListadoComponent},
+  {path: 'Listado/Resultados' , component: ListadoComponent},
+  {path: 'Listado/Jugadores' , component: ListadoComponent},
   // {path: 'Paises' , component: ListadoDePaisesComponent},
 
   {path: 'Juegos' ,
@@ -49,7 +51,9 @@ const routes: Routes = [
       {path: 'Agilidad' , component: AgilidadAritmeticaComponent},
       {path: 'TaTeTi' , component: TaTeTiComponent},
       {path: 'Memotest' , component: MemotestComponent},
-      {path: 'Sudoku' , component: SudokuComponent}]
+      {path: 'Sudoku' , component: SudokuComponent},
+      {path: 'LoginRequired' , component: NoAutorizadoComponent},
+    ]
   },
   {path: '**' , component: ErrorComponent},
   {path: 'error' , component: ErrorComponent}

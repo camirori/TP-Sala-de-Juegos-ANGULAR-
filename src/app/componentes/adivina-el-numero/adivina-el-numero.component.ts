@@ -1,5 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { JuegoAdivina } from '../../clases/juego-adivina'
+import { JuegoAdivina } from '../../clases/juego-adivina';
+import { Juego } from '../../clases/juego';
+import { AuthService } from '../../servicios/auth.service';
+import { JuegosPuntajesService } from '../../servicios/juegos-puntajes.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-adivina-el-numero',
@@ -7,24 +11,31 @@ import { JuegoAdivina } from '../../clases/juego-adivina'
   styleUrls: ['./adivina-el-numero.component.css']
 })
 export class AdivinaElNumeroComponent implements OnInit {
-  @Output() enviarJuego: EventEmitter<any>= new EventEmitter<any>();
+  @Output() enviarJuegoEvent: EventEmitter<Juego>= new EventEmitter<Juego>();
 
   nuevoJuego: JuegoAdivina;
   Mensajes:string;
   contador:number;
   ocultarVerificar:boolean;
+  email;
  
-  constructor() { 
-    //this.nuevoJuego = new JuegoAdivina();
+  constructor(private auth: AuthService,private puntaje: JuegosPuntajesService
+            ,private route: Router) { 
     this.ocultarVerificar=false;
+    if(localStorage.getItem('isLoggedIn')=='1')
+      this.email=localStorage.getItem('email');
+    else if(sessionStorage.getItem('isLoggedIn')=='1')
+      this.email=sessionStorage.getItem('email');
+    else
+      this.route.navigate(['/Juegos/LoginRequired']);
   }
 
 
   generarnumero() {
-    this.nuevoJuego = new JuegoAdivina();
-    this.nuevoJuego.generarnumero();
+    this.nuevoJuego = new JuegoAdivina(this.email);
     this.contador=0;   
     console.info("numero Secreto:",this.nuevoJuego.numeroSecreto);  
+    console.log(this.nuevoJuego);
   }
 
   verificar()
@@ -32,8 +43,11 @@ export class AdivinaElNumeroComponent implements OnInit {
     this.contador++;
     if (this.nuevoJuego.verificar()){
       
-      //this.enviarJuego.emit(this.nuevoJuego);
+      
       this.MostarMensaje("Sos un Genio!!!",true);
+      this.nuevoJuego.calcularPuntaje(this.contador);
+      this.puntaje.guardar(this.nuevoJuego);
+      this.enviarJuegoEvent.emit(this.nuevoJuego);
 
     }else{
 
@@ -65,7 +79,7 @@ export class AdivinaElNumeroComponent implements OnInit {
       this.MostarMensaje("#"+this.contador+" "+mensaje+" ayuda :"+this.nuevoJuego.retornarAyuda());
      
     }
-    console.info("numero Secreto:",this.nuevoJuego.gano);  
+    console.info("numero Secreto:",this.nuevoJuego.Resultado);  
   }  
 
   MostarMensaje(mensaje:string="este es el mensaje",ganador:boolean=false) {

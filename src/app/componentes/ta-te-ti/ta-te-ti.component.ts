@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoTateti } from 'src/app/clases/juego-tateti';
-
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
+import { AuthService } from '../../servicios/auth.service';
+import { JuegosPuntajesService } from '../../servicios/juegos-puntajes.service';
+import { BreakpointObserver, BreakpointState, Breakpoints} from '@angular/cdk/layout';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-ta-te-ti',
@@ -19,11 +16,36 @@ export class TaTeTiComponent implements OnInit {
   habilitarOpciones: boolean;
   linea;
   tiles;
+  email;
 
-  constructor() { }
+  width;
+  left;
+
+  constructor(private auth: AuthService,private puntaje: JuegosPuntajesService,
+      public breakpointObserver: BreakpointObserver,private route: Router) { 
+      if(localStorage.getItem('isLoggedIn')=='1')
+        this.email=localStorage.getItem('email');
+      else if(sessionStorage.getItem('isLoggedIn')=='1')
+        this.email=sessionStorage.getItem('email');
+      else
+        this.route.navigate(['/Juegos/LoginRequired']);
+  }
 
   ngOnInit(): void {
     this.nuevoJuego();
+
+    this.breakpointObserver
+        .observe([Breakpoints.Handset])
+        .subscribe((state: BreakpointState) => {
+          if (state.matches) {
+            this.width='100%'
+            this.left='0';
+          }
+          else{
+            this.width='60%';
+            this.left='20%';
+          }
+        });
 
   }
 
@@ -46,9 +68,10 @@ export class TaTeTiComponent implements OnInit {
   nuevoJuego(){
     console.log('Nuevo juego');
     this.grilla();
-    this.juego= new JuegoTateti();
+    this.juego= new JuegoTateti(this.email);
     this.mensaje=undefined;
     this.habilitarOpciones=true;
+    console.log(this.juego);
   }
 
   movimientoJugador(casillero: number){
@@ -98,13 +121,19 @@ export class TaTeTiComponent implements OnInit {
     switch(this.juego.resultado){
       case 0:
         this.mensaje='Empate';
+        this.juego.calcularPuntaje(0);
+        this.puntaje.guardar(this.juego);
         return false;
       case 1:
         this.mensaje='Ganaste!';
         this.colorearBordes(this.linea);
+        this.juego.calcularPuntaje(1);
+        this.puntaje.guardar(this.juego);
         return false;
       case 2:
         this.mensaje='Perdiste';
+        this.juego.calcularPuntaje(2);
+        this.puntaje.guardar(this.juego);
         this.colorearBordes(this.linea);
         return false;
       default:
